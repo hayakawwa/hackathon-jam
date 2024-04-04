@@ -1,0 +1,20 @@
+@import "../../../consts";
+
+.input {
+  display: block;
+  position: relative;
+
+  width: 328px;
+  height: 56px;
+  border-radius: 10px;
+  border: 1px solid $base-border;
+
+  font-size: 16px;
+  line-height: 16.35px;
+
+  padding: 20px 24px;
+
+  &::placeholder {
+    color: $base-input-placeholder;
+  }
+}
