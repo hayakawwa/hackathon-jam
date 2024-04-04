@@ -1,11 +1,11 @@
-import Input from "@/app/components/ui-kit/Input/Input";
-import Title from "@/app/components/ui-kit/Title/Title";
+import Register from "@/app/components/Register/Register";
 
 const RegisterPage = () => {
     return (
         <section>
+            <Register/>
         </section>
-    )
+    );
 }
 
 export default RegisterPage;
