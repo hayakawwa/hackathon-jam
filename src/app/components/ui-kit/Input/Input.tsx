@@ -1,7 +1,7 @@
 import cls from './Input.module.scss'
 import {FC} from "react";
 
-interface IInputProps {
+export interface IInputProps {
     placeholder: string,
     name: string,
     className?: string,
@@ -19,10 +19,11 @@ const Input: FC<IInputProps> = ({placeholder, name, className = '', value, requi
             type={isPassword ? 'password' : 'text'}
             placeholder={placeholder}
             name={name}
-            value={value}
+            id={name}
             required={required}
         />
     )
 }
 
 export default Input;
+
