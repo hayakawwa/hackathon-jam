@@ -1,12 +1,14 @@
 import RegisterSteps from "@/app/enums/RegisterSteps";
 import {IInputProps} from "@/app/components/ui-kit/Input/Input";
+import {IPlateProps} from "@/app/components/ui-kit/Plate/Plate";
+import {ITextareaProps} from "@/app/components/ui-kit/Textarea/Textarea";
 
 interface IStepData {
     title: string,
-    description?: string[],
+    descriptions?: string[],
     inputs?: IInputProps[],
-    plates?: any[],
-    textarea?: any,
+    plates?: IPlateProps[],
+    textarea?: ITextareaProps,
 }
 
 type IStepsData = {
@@ -38,6 +40,18 @@ export const stepsData: IStepsData = {
     },
     [RegisterSteps.Role]: {
         title: 'Участник или организатор?',
+        plates: [
+            {
+                title: 'Я - участник хакатона',
+                value: 'member',
+                name: 'role'
+            },
+            {
+                title: 'Я - организатор хакатонов',
+                value: 'organisation',
+                name: 'role'
+            },
+        ]
     },
     [RegisterSteps.Name]: {
         title: 'Как вас зовут?',
@@ -66,16 +80,39 @@ export const stepsData: IStepsData = {
     [RegisterSteps.Skills]: {
         // TODO: сделать селект для навыков
         title: 'На чем вы специализируетесь?',
-        description: ['Укажите как минимум 3 ваших навыка'],
+        descriptions: ['Укажите как минимум 3 ваших навыка'],
         inputs: [
             {
                 placeholder: 'Добавьте навыки',
-                name: 'skills'
+                name: 'skills',
+                subText: '0 из 3 навыков'
             },
         ],
     },
     [RegisterSteps.Activity]: {
         title: 'Ваша деятельность',
+        plates: [
+            {
+                title: 'Я - студент СУЗа или ВУЗа',
+                value: 'student',
+                name: 'activity'
+            },
+            {
+                title: 'Я - школьник',
+                value: 'pupil',
+                name: 'activity'
+            },
+            {
+                title: 'Я работаю в IT',
+                value: 'worker',
+                name: 'activity'
+            },
+            {
+                title: 'Я ищу свое место в IT',
+                value: 'seeker',
+                name: 'activity'
+            },
+        ]
     },
     [RegisterSteps.Experience]: {
         title: 'Как долго вы работаете в своей сфере?',
@@ -89,7 +126,7 @@ export const stepsData: IStepsData = {
     [RegisterSteps.Location]: {
         // TODO: сделать селект для локации
         title: 'Откуда вы?',
-        description: ['Укажите ваш населенный пункт', 'Будем подбирать хакатоны рядом с вами'],
+        descriptions: ['Укажите ваш населенный пункт', 'Будем подбирать хакатоны рядом с вами'],
         inputs: [
             {
                 placeholder: 'Локация',
@@ -98,9 +135,12 @@ export const stepsData: IStepsData = {
         ],
     },
     [RegisterSteps.Bio]: {
-        // TODO: сделать textarea для uikit
         title: 'Расскажите о себе',
-        description: ['Расскажите о себе. Это поможет тимлидам пригласить вас в команду'],
+        descriptions: ['Расскажите о себе. Это поможет тимлидам пригласить вас в команду'],
+        textarea: {
+            children: '',
+            name: 'bio'
+        }
     },
     [RegisterSteps.Avatar]: {
         title: 'Загрузите фото профиля',
