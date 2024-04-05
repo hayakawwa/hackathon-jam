@@ -9,7 +9,7 @@ import BackArrow from '../../assets/back-arrow.svg';
 import Image from "next/image";
 
 const Register = () => {
-    const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Initial);
+    const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Location);
 
     const goToNextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -25,7 +25,10 @@ const Register = () => {
                 <Step step={currentStep}/>
                 <div className={cls.buttons}>
                     {currentStep !== RegisterSteps.Initial &&
-                        <button className={cls.backBtn} onClick={goToPreviousStep}>
+                        <button className={cls.backBtn} onClick={(evt) => {
+                            evt.preventDefault();
+                            goToPreviousStep();
+                        }}>
                             <Image src={BackArrow} alt={''}/>
                         </button>
                     }
