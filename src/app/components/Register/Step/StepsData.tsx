@@ -1,13 +1,14 @@
 import RegisterSteps from "@/app/enums/RegisterSteps";
 import {IInputProps} from "@/app/components/ui-kit/Input/Input";
 import {IPlateProps} from "@/app/components/ui-kit/Plate/Plate";
+import {ITextareaProps} from "@/app/components/ui-kit/Textarea/Textarea";
 
 interface IStepData {
     title: string,
     descriptions?: string[],
     inputs?: IInputProps[],
     plates?: IPlateProps[],
-    textarea?: any,
+    textarea?: ITextareaProps,
 }
 
 type IStepsData = {
@@ -133,9 +134,12 @@ export const stepsData: IStepsData = {
         ],
     },
     [RegisterSteps.Bio]: {
-        // TODO: сделать textarea для uikit
         title: 'Расскажите о себе',
         descriptions: ['Расскажите о себе. Это поможет тимлидам пригласить вас в команду'],
+        textarea: {
+            children: '',
+            name: 'bio'
+        }
     },
     [RegisterSteps.Avatar]: {
         title: 'Загрузите фото профиля',
