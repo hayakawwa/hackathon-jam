@@ -32,9 +32,9 @@ const Step: FC<IStepProps> = ({step}) => {
                 </div>
             ))}
             {inputs &&
-                inputs.map(({placeholder, name, value = '', required = false, isPassword = false}) => (
+                inputs.map(({placeholder, name, value = '', required = false, isPassword = false, subText}) => (
                 <div className={cls.inputs}>
-                    <Input key={name} placeholder={placeholder} name={name} value={value} required={required} isPassword={isPassword}/>
+                    <Input key={name} placeholder={placeholder} name={name} value={value} required={required} isPassword={isPassword} subText={subText}/>
                 </div>
             ))}
             {plates &&

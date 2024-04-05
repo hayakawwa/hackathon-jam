@@ -1,5 +1,9 @@
 @import "../../../consts";
 
+.wrapper {
+  display: inline-block;
+}
+
 .input {
   display: block;
   position: relative;
@@ -17,4 +21,14 @@
   &::placeholder {
     color: $base-input-placeholder;
   }
+}
+
+.subText {
+  font-size: 14px;
+  line-height: 22.12px;
+
+  color: $base-input-placeholder;
+  text-align: right;
+
+  margin-top: 8px;
 }

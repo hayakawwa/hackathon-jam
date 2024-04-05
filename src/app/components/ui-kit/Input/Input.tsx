@@ -7,21 +7,25 @@ export interface IInputProps {
     className?: string,
     value?: string,
     required?: boolean,
-    isPassword?: boolean
+    isPassword?: boolean,
+    subText?: string
 }
 
 // TODO: добавить отображение обязательных полей
 
-const Input: FC<IInputProps> = ({placeholder, name, className = '', value, required = false, isPassword = false}) => {
+const Input: FC<IInputProps> = ({placeholder, name, className = '', value, required = false, isPassword = false, subText}) => {
     return (
-        <input
-            className={cls.input + className}
-            type={isPassword ? 'password' : 'text'}
-            placeholder={placeholder}
-            name={name}
-            id={name}
-            required={required}
-        />
+        <div className={cls.wrapper}>
+            <input
+                className={cls.input + className}
+                type={isPassword ? 'password' : 'text'}
+                placeholder={placeholder}
+                name={name}
+                id={name}
+                required={required}
+            />
+            <p className={cls.subText}>{subText}</p>
+        </div>
     )
 }
 

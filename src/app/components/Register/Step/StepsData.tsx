@@ -84,7 +84,8 @@ export const stepsData: IStepsData = {
         inputs: [
             {
                 placeholder: 'Добавьте навыки',
-                name: 'skills'
+                name: 'skills',
+                subText: '0 из 3 навыков'
             },
         ],
     },
