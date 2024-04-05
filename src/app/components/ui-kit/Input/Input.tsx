@@ -7,6 +7,8 @@ export interface IInputProps {
     className?: string,
     value?: string,
     required?: boolean,
+    isPassword?: boolean,
+    subText?: string,
 }
 
 // TODO: добавить отображение обязательных полей

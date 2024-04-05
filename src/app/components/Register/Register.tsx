@@ -1,7 +1,7 @@
 'use client'
 
 import cls from './Register.module.scss';
-import {useState} from "react";
+import React, {useState} from "react";
 import RegisterSteps from "@/app/enums/RegisterSteps";
 import Step from "@/app/components/Register/Step/Step";
 import Button from "@/app/components/ui-kit/Button/Button";
@@ -9,7 +9,7 @@ import BackArrow from '../../assets/back-arrow.svg';
 import Image from "next/image";
 
 const Register = () => {
-    const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Skills);
+    const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Initial);
 
     const goToNextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -32,7 +32,14 @@ const Register = () => {
                             <Image src={BackArrow} alt={''}/>
                         </button>
                     }
-                    {currentStep !== RegisterSteps.Avatar && <Button onClick={goToNextStep}>Продолжить</Button>}
+                    {currentStep !== RegisterSteps.Avatar &&
+                        <Button onClick={(evt: React.MouseEvent<HTMLButtonElement>) => {
+                            evt.preventDefault();
+                            goToNextStep();
+                        }}
+                        >
+                            Продолжить
+                        </Button>}
                     {currentStep === RegisterSteps.Avatar && <Button onClick={goToNextStep}>Создать профиль</Button>}
                 </div>
             </form>

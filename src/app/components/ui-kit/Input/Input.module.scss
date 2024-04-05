@@ -2,6 +2,7 @@
 
 .wrapper {
   display: inline-block;
+  width: 100%;
 }
 
 .input {
@@ -16,6 +17,8 @@
   line-height: 16.35px;
 
   padding: 20px 24px;
+
+  width: 100%;
 
   &::placeholder {
     color: $base-input-placeholder;
