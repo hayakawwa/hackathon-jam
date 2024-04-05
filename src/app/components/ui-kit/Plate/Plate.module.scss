@@ -1,0 +1,24 @@
+@import "../../../consts";
+
+.input {
+  display: none;
+}
+
+.label {
+  display: flex;
+  width: 328px;
+  height: 249px;
+  border: 1px solid $base-border;
+  border-radius: 10px;
+
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border: 1px solid $base-border-hover;
+  }
+
+  &:active {
+    border: 1px solid #000;
+  }
+}
