@@ -5,6 +5,7 @@ import Title from "@/app/components/ui-kit/Title/Title";
 import Input from "@/app/components/ui-kit/Input/Input";
 import cls from './Step.module.scss'
 import Plate from "@/app/components/ui-kit/Plate/Plate";
+import Textarea from "@/app/components/ui-kit/Textarea/Textarea";
 
 interface IStepProps {
     step: RegisterSteps
@@ -30,7 +31,8 @@ const Step: FC<IStepProps> = ({step}) => {
                     <p>{description}</p>
                 </div>
             ))}
-            {inputs && inputs.map(({placeholder, name, value = '', required = false, isPassword = false}) => (
+            {inputs &&
+                inputs.map(({placeholder, name, value = '', required = false, isPassword = false}) => (
                 <div className={cls.inputs}>
                     <Input key={name} placeholder={placeholder} name={name} value={value} required={required} isPassword={isPassword}/>
                 </div>
@@ -40,6 +42,11 @@ const Step: FC<IStepProps> = ({step}) => {
                     {plates.map(({value, name, title}) => (
                         <Plate key={value} value={value} name={name} title={title}/>
                     ))}
+                </div>
+            }
+            {textarea &&
+                <div className={cls.textarea}>
+                    <Textarea name={textarea.name} placeholder={textarea.placeholder}>{textarea.children}</Textarea>
                 </div>
             }
         </>

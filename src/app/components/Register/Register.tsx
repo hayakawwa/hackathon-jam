@@ -9,7 +9,7 @@ import BackArrow from '../../assets/back-arrow.svg';
 import Image from "next/image";
 
 const Register = () => {
-    const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Location);
+    const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Bio);
 
     const goToNextStep = () => {
         setCurrentStep(currentStep + 1);
