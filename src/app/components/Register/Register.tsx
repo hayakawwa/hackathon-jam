@@ -9,7 +9,7 @@ import BackArrow from '../../assets/back-arrow.svg';
 import Image from "next/image";
 
 const Register = () => {
-    const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Initial);
+    const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Skills);
 
     const goToNextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -32,7 +32,8 @@ const Register = () => {
                             <Image src={BackArrow} alt={''}/>
                         </button>
                     }
-                    <Button onClick={goToNextStep}>Продолжить</Button>
+                    {currentStep !== RegisterSteps.Avatar && <Button onClick={goToNextStep}>Продолжить</Button>}
+                    {currentStep === RegisterSteps.Avatar && <Button onClick={goToNextStep}>Создать профиль</Button>}
                 </div>
             </form>
             <div className={cls.footer + ''}>
