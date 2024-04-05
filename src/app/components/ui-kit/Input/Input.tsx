@@ -8,11 +8,13 @@ export interface IInputProps {
     value?: string,
     required?: boolean,
     isPassword?: boolean
+    width?: string | number
 }
 
 // TODO: добавить отображение обязательных полей
 
-const Input: FC<IInputProps> = ({placeholder, name, className = '', value, required = false, isPassword = false}) => {
+const Input: FC<IInputProps> = ({placeholder, name, className = '', value,
+                                    required = false, isPassword = false, width}) => {
     return (
         <input
             className={cls.input + className}
@@ -21,6 +23,7 @@ const Input: FC<IInputProps> = ({placeholder, name, className = '', value, requi
             name={name}
             id={name}
             required={required}
+            style={{width: width}}
         />
     )
 }
