@@ -3,20 +3,20 @@ import React, {FC} from "react";
 
 interface IButtonProps {
     children: string,
-    onClick: () => void,
-    w?: string,
+    onClick?: () => void,
+    width?: string | number,
 }
 
-const Button: FC<IButtonProps> = ({children, w, onClick}) => {
-    const handleOnClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
-        evt.preventDefault();
-        onClick();
-    }
+const Button: FC<IButtonProps> = ({children, width, onClick}) => {
+    // const handleOnClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
+    //     evt.preventDefault();
+    //     onClick();
+    // }
     return (
         <button
             className={cls.button}
-            style={{width: w}}
-            onClick={handleOnClick}
+            style={{width: width}}
+            onClick={onClick}
         >
             {children}
         </button>

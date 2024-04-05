@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  align-items: end;
+  .filters {
+    display: flex;
+    gap: 20px;
+  }
+}
+.activeFilters {
+  margin-bottom: 20px;
+  p {
+    background-color: rgba(212, 93, 93, 1);
+    width: max-content;
+    padding: 7px 14px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+.input {
+  margin-bottom: 20px;
+}
+.eventsContainer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
