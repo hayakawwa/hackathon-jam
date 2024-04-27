@@ -46,7 +46,6 @@ const Register = () => {
                           onSubmit={(evt: React.FormEvent<HTMLFormElement>) => {
                               evt.preventDefault();
                               const inputs = getInputs(evt);
-                              console.log(inputs);
                               inputs.forEach((i) => {
                                   if (!currentRegFields.includes(i.name)) {
                                       return
