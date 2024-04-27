@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from './EventsDirectory.module.scss'
 import Input from "@/app/components/ui-kit/Input/Input";
 import EventCard, {EventCardProps} from "@/app/components/Home/EventCard/EventCard";
+import Title from "@/app/components/ui-kit/Title/Title";
 
 const mockEventsData: EventCardProps[] = [
   {
@@ -53,7 +54,7 @@ export default function EventsDirectory() {
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <section className={styles.headerWrapper}>
-          <p className={styles.header}>Каталог событий</p>
+          <Title fontSize={'32px'}>Каталог событий</Title>
           <div className={styles.filters}>
             <Select>Даты</Select>
             <Select>Локация</Select>

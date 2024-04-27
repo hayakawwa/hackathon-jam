@@ -14,10 +14,8 @@ export interface IInputProps {
 
 // TODO: добавить отображение обязательных полей
 
-const Input: FC<IInputProps> = ({
-                                  placeholder, name, className = '', value,
-                                  required = false, width = '100%', isPassword, height
-                                }) => {
+const Input: FC<IInputProps> = ({placeholder, name, className = '', value,
+                                  required = false, width = '100%', isPassword, height}) => {
     return (
             <input
                 className={cls.input + className}
