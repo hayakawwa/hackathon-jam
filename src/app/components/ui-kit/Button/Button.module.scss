@@ -1,7 +1,10 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../../../fonts/Montserrat-SemiBold.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
 .button {
-  background-color: #000;
-  height: 48px;
-  color: #fff;
-  border-radius: 10px;
-  flex-grow: 100;
+  font-weight: 500;
 }
