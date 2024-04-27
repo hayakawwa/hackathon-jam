@@ -3,7 +3,7 @@ import React, {FC} from "react";
 
 interface IButtonProps {
     children: string,
-    onClick?: () => void,
+    onClick?: (evt: React.MouseEvent<HTMLButtonElement>) => void,
     width?: string | number,
     backgroundColor?: string,
     color?: string
