@@ -6,6 +6,7 @@ import Input from "@/app/components/ui-kit/Input/Input";
 import cls from './Step.module.scss'
 import Plate from "@/app/components/ui-kit/Plate/Plate";
 import Textarea from "@/app/components/ui-kit/Textarea/Textarea";
+import Multiselect from "@/app/components/ui-kit/Multiselect/Multiselect";
 
 interface IStepProps {
     step: RegisterSteps
@@ -17,13 +18,14 @@ const Step: FC<IStepProps> = ({step}) => {
         descriptions,
         inputs,
         plates,
-        textarea
+        textarea,
+        multiselect
     } = stepsData[step];
 
     return (
         <>
-            <header className={cls.header}>
-                <Title value={title}/>
+            <header className={`${cls.header} ${plates && cls.wideHeader}`}>
+                <Title>{title}</Title>
             </header>
 
             {descriptions && descriptions.map((description) => (
@@ -32,9 +34,9 @@ const Step: FC<IStepProps> = ({step}) => {
                 </div>
             ))}
             {inputs &&
-                inputs.map(({placeholder, name, value = '', required = false, isPassword = false, subText}) => (
+                inputs.map(({placeholder, name, value = '', required = false, isPassword = false}) => (
                 <div className={cls.inputs}>
-                    <Input key={name} placeholder={placeholder} name={name} value={value} required={required} isPassword={isPassword} subText={subText}/>
+                    <Input borderRadius={'12px'} key={name} placeholder={placeholder} name={name} value={value} required={required} isPassword={isPassword}/>
                 </div>
             ))}
             {plates &&
@@ -47,6 +49,16 @@ const Step: FC<IStepProps> = ({step}) => {
             {textarea &&
                 <div className={cls.textarea}>
                     <Textarea name={textarea.name} placeholder={textarea.placeholder}>{textarea.children}</Textarea>
+                </div>
+            }
+            {multiselect &&
+                <div className={cls.multiselect}>
+                    <Multiselect
+                        options={multiselect.options}
+                        placeholder={multiselect.placeholder}
+                        name={multiselect.name}
+                        maxOptionsSelected={multiselect.maxOptionsSelected}
+                    />
                 </div>
             }
         </>

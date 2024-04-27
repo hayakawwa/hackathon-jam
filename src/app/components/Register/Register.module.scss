@@ -1,5 +1,15 @@
 @import "../../consts";
 
+.layout {
+  width: 1372px;
+  margin: 16px auto 0;
+
+  background-color: #ffffff;
+  border-radius: 80px;
+
+  height: 85vh;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -55,4 +65,8 @@
   display: flex;
 
   margin: 0 auto;
+}
+
+.logo {
+  margin: 60px auto 0;
 }
