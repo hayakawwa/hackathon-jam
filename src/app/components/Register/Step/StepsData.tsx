@@ -2,6 +2,7 @@ import RegisterSteps from "@/app/enums/RegisterSteps";
 import {IInputProps} from "@/app/components/ui-kit/Input/Input";
 import {IPlateProps} from "@/app/components/ui-kit/Plate/Plate";
 import {ITextareaProps} from "@/app/components/ui-kit/Textarea/Textarea";
+import {IMultiselectProps} from "@/app/components/ui-kit/Multiselect/Multiselect";
 
 interface IStepData {
     title: string,
@@ -9,6 +10,7 @@ interface IStepData {
     inputs?: IInputProps[],
     plates?: IPlateProps[],
     textarea?: ITextareaProps,
+    multiselect?: IMultiselectProps,
 }
 
 type IStepsData = {
@@ -81,13 +83,13 @@ export const stepsData: IStepsData = {
         // TODO: сделать селект для навыков
         title: 'На чем вы специализируетесь?',
         descriptions: ['Укажите как минимум 3 ваших навыка'],
-        inputs: [
-            {
-                placeholder: 'Добавьте навыки',
-                name: 'skills',
-                subText: '0 из 3 навыков'
-            },
-        ],
+        multiselect: {
+            placeholder: 'Добавьте навыки',
+            name: 'skills',
+            maxOptionsSelected: 3,
+            options: ['JS', 'Frontend', 'Backend', 'DevOps', 'Python'],
+        },
+
     },
     [RegisterSteps.Activity]: {
         title: 'Ваша деятельность',

@@ -12,9 +12,13 @@
 }
 
 .header {
-  min-width: 328px;
+  width: 328px;
   margin: 0 auto;
   text-align: left;
+}
+
+.wideHeader {
+  width: fit-content;
 }
 
 .descriptions {
@@ -24,4 +28,9 @@
 
 .wrapper {
   display: inline-block;
+}
+
+.multiselect {
+  width: 328px;
+  margin: 0 auto;
 }
