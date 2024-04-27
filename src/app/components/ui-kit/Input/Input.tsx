@@ -3,19 +3,20 @@ import {FC} from "react";
 
 export interface IInputProps {
   placeholder: string,
-  name: string,
+  name?: string,
+  borderRadius?: string,
   className?: string,
   value?: string,
   required?: boolean,
   width?: string | number,
   height?: string
-  isPassword?: boolean,
+  isPassword?: boolean
 }
 
 // TODO: добавить отображение обязательных полей
 
 const Input: FC<IInputProps> = ({placeholder, name, className = '', value,
-                                  required = false, width = '100%', isPassword, height}) => {
+                                  required = false, borderRadius = '20px', width = '100%', isPassword, height}) => {
     return (
             <input
                 className={cls.input + className}
@@ -24,7 +25,7 @@ const Input: FC<IInputProps> = ({placeholder, name, className = '', value,
                 name={name}
                 id={name}
                 required={required}
-                style={{height: height, width: width}}
+                style={{height: height, width: width, borderRadius: borderRadius}}
             />
     )
 }

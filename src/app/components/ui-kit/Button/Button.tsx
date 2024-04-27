@@ -10,16 +10,18 @@ interface IButtonProps {
     border?: string
     padding?: string
     borderRadius?: string
+    isSubmit?: boolean
 }
 
 const Button: FC<IButtonProps> = ({children, width, onClick,
-                                      backgroundColor= '', color = 'white',
+                                      backgroundColor= '', color = 'white', isSubmit = false,
                                       border, padding = '16px', borderRadius = '12px'}) => {
     return (
         <button
             className={cls.button}
             style={{width: width, backgroundColor: backgroundColor, color: color,
                 border: border, padding: padding, borderRadius: borderRadius}}
+            type={isSubmit ? 'submit' : 'button'}
             onClick={onClick}
         >
             {children}

@@ -61,21 +61,21 @@ export const stepsData: IStepsData = {
             {
                 placeholder: 'Никнейм',
                 required: true,
-                name: 'nickname'
+                name: 'username'
             },
             {
                 placeholder: 'Фамилия',
                 required: true,
-                name: 'secondName'
+                name: 'last_name'
             },
             {
                 placeholder: 'Имя',
                 required: true,
-                name: 'firstName'
+                name: 'first_name'
             },
             {
                 placeholder: 'Отчество',
-                name: 'middleName'
+                name: 'middle_name'
             },
         ],
     },
