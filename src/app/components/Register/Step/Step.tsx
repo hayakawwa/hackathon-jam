@@ -6,6 +6,7 @@ import Input from "@/app/components/ui-kit/Input/Input";
 import cls from './Step.module.scss'
 import Plate from "@/app/components/ui-kit/Plate/Plate";
 import Textarea from "@/app/components/ui-kit/Textarea/Textarea";
+import Multiselect from "@/app/components/ui-kit/Multiselect/Multiselect";
 
 interface IStepProps {
     step: RegisterSteps
@@ -17,12 +18,13 @@ const Step: FC<IStepProps> = ({step}) => {
         descriptions,
         inputs,
         plates,
-        textarea
+        textarea,
+        multiselect
     } = stepsData[step];
 
     return (
         <>
-            <header className={cls.header}>
+            <header className={`${cls.header} ${plates && cls.wideHeader}`}>
                 <Title value={title}/>
             </header>
 
@@ -47,6 +49,16 @@ const Step: FC<IStepProps> = ({step}) => {
             {textarea &&
                 <div className={cls.textarea}>
                     <Textarea name={textarea.name} placeholder={textarea.placeholder}>{textarea.children}</Textarea>
+                </div>
+            }
+            {multiselect &&
+                <div className={cls.multiselect}>
+                    <Multiselect
+                        options={multiselect.options}
+                        placeholder={multiselect.placeholder}
+                        name={multiselect.name}
+                        maxOptionsSelected={multiselect.maxOptionsSelected}
+                    />
                 </div>
             }
         </>
