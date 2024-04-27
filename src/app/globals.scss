@@ -1,23 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "consts";
 
 @font-face {
-  font-family: 'RockStar';
-  src: url('./fonts/RS-regular.otf');
+  font-family: 'Montserrat';
+  src: url('./fonts/Montserrat-Regular.otf');
   font-weight: 400;
   font-style: normal;
 }
 
-@import "consts";
 
 body {
-  font-family: 'RockStar', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: normal;
   font-size: 16px;
   color: $base-text;
-
-  width: 1372px;
-
-  margin: 0 auto;
+  background-color: $base-background;
+  //width: 1372px;
+  //
+  //margin: 0 auto;
 }

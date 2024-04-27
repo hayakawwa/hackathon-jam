@@ -5,17 +5,21 @@ interface IButtonProps {
     children: string,
     onClick?: () => void,
     width?: string | number,
+    backgroundColor?: string,
+    color?: string
+    border?: string
+    padding?: string
+    borderRadius?: string
 }
 
-const Button: FC<IButtonProps> = ({children, width, onClick}) => {
-    // const handleOnClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
-    //     evt.preventDefault();
-    //     onClick();
-    // }
+const Button: FC<IButtonProps> = ({children, width, onClick,
+                                      backgroundColor= '', color = 'white',
+                                      border, padding = '16px', borderRadius = '12px'}) => {
     return (
         <button
             className={cls.button}
-            style={{width: width}}
+            style={{width: width, backgroundColor: backgroundColor, color: color,
+                border: border, padding: padding, borderRadius: borderRadius}}
             onClick={onClick}
         >
             {children}
