@@ -10,6 +10,14 @@
   height: 800px;
 }
 
+.header {
+  width: 328px;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 auto 24px;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -22,7 +30,6 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
 .footerText {
@@ -41,6 +48,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  margin-top: 20px;
 }
 
 .backBtn {
@@ -69,4 +78,22 @@
 
 .logo {
   margin: 60px auto 0;
+}
+
+.input {
+  margin-bottom: 24px;
+  p {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 20px;
+
+  font-size: 14px;
 }
