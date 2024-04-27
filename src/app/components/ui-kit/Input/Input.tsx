@@ -2,8 +2,8 @@ import cls from './Input.module.scss'
 import {FC} from "react";
 
 export interface IInputProps {
-  placeholder: string,
-  name?: string,
+  placeholder?: string,
+  name: string,
   borderRadius?: string,
   className?: string,
   value?: string,
@@ -15,7 +15,7 @@ export interface IInputProps {
 
 // TODO: добавить отображение обязательных полей
 
-const Input: FC<IInputProps> = ({placeholder, name, className = '', value,
+const Input: FC<IInputProps> = ({placeholder = '', name, className = '', value,
                                   required = false, borderRadius = '20px', width = '100%', isPassword, height}) => {
     return (
             <input

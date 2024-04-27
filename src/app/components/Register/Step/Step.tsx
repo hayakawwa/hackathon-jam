@@ -36,7 +36,8 @@ const Step: FC<IStepProps> = ({step}) => {
             {inputs &&
                 inputs.map(({placeholder, name, value = '', required = false, isPassword = false}) => (
                 <div className={cls.inputs}>
-                    <Input borderRadius={'12px'} key={name} placeholder={placeholder} name={name} value={value} required={required} isPassword={isPassword}/>
+                    <p>{placeholder}</p>
+                    <Input borderRadius={'12px'} key={name} name={name} value={value} required={required} isPassword={isPassword}/>
                 </div>
             ))}
             {plates &&
