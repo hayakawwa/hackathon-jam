@@ -25,7 +25,7 @@ const Step: FC<IStepProps> = ({step}) => {
     return (
         <>
             <header className={`${cls.header} ${plates && cls.wideHeader}`}>
-                <Title value={title}/>
+                <Title>{title}</Title>
             </header>
 
             {descriptions && descriptions.map((description) => (
@@ -34,9 +34,9 @@ const Step: FC<IStepProps> = ({step}) => {
                 </div>
             ))}
             {inputs &&
-                inputs.map(({placeholder, name, value = '', required = false, isPassword = false, subText}) => (
+                inputs.map(({placeholder, name, value = '', required = false, isPassword = false}) => (
                 <div className={cls.inputs}>
-                    <Input key={name} placeholder={placeholder} name={name} value={value} required={required} isPassword={isPassword} subText={subText}/>
+                    <Input borderRadius={'12px'} key={name} placeholder={placeholder} name={name} value={value} required={required} isPassword={isPassword}/>
                 </div>
             ))}
             {plates &&
