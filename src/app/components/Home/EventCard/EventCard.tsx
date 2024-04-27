@@ -1,22 +1,34 @@
 import styles from './EventCard.module.scss'
-import Title from "@/app/components/ui-kit/Title/Title";
 import Image from "next/image";
-import location from '@/app/assets/location-item.svg'
+import locationIcon from '@/app/assets/location-item.svg'
 
-export default function EventCard() {
+export interface EventCardProps {
+  id: number
+  title?: string
+  date?: string
+  location?: {
+    city?: string
+    street?: string
+  }
+  tag?: string
+}
+
+export default function EventCard({title, location, date, tag}: EventCardProps) {
   return (
     <div className={styles.wrapper}>
       <p className={styles.avatar}></p>
-      <p className={styles.date}>24 июня - 26 июня</p>
-      <h1 className={styles.title}>Название хакатона</h1>
-      <section className={styles.locationWrapper}>
-        <Image src={location} alt={'location'} />
-        <div className={styles.location}>
-          <p className={styles.city}>Екатеринбург, Россия</p>
-          <p className={styles.street}>ул. Мира, 19</p>
+      <div className={styles.content}>
+        <p className={styles.date}>{date}</p>
+        <p className={styles.title}>{title}</p>
+        <div className={styles.locationWrapper}>
+          <Image src={locationIcon} alt={'locationIcon'}/>
+          <div className={styles.location}>
+            <p className={styles.city}>{location?.city}</p>
+            <p className={styles.street}>{location?.street}</p>
+          </div>
         </div>
-      </section>
-      <p className={styles.tag}>тэг мероприятия</p>
+        <p className={styles.tag}>{tag}</p>
+      </div>
     </div>
   )
 }

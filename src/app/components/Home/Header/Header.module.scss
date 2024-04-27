@@ -1,14 +1,16 @@
+@import "../../../consts";
 .header {
+  display: flex;
+  margin-top: 60px;
   align-items: center;
-  display: grid;
   .logo {
-    font-size: 80px;
     margin: 0 auto;
   }
   .buttons {
     display: flex;
-    gap: 8px;
     position: absolute;
-    right: 137px;
+    gap: 20px;
+    right: 8.3%;
+    width: max-content;
   }
 }
