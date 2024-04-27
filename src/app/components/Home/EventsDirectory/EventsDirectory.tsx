@@ -54,7 +54,7 @@ export default function EventsDirectory() {
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <section className={styles.headerWrapper}>
-          <Title fontSize={'32px'}>Каталог событий</Title>
+          <Title className={styles.title}>Каталог событий</Title>
           <div className={styles.filters}>
             <Select>Даты</Select>
             <Select>Локация</Select>

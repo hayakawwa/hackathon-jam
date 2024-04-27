@@ -6,6 +6,7 @@ import {setupStore} from "@/app/store/store";
 import {Provider} from "react-redux";
 const store = setupStore();
 
+
 export default function HomePage() {
   return (
     <Provider store={store}>

@@ -19,7 +19,7 @@ const Input: FC<IInputProps> = ({placeholder, name, className = '', value,
                                   required = false, borderRadius = '20px', width = '100%', isPassword, height}) => {
     return (
             <input
-                className={cls.input + className}
+                className={`${cls.input} ${className}`}
                 type={isPassword ? 'password' : 'text'}
                 placeholder={placeholder}
                 name={name}

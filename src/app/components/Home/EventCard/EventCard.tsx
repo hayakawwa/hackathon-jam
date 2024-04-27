@@ -2,6 +2,7 @@ import styles from './EventCard.module.scss'
 import Image from "next/image";
 import locationIcon from '@/app/assets/location-item.svg'
 import Title from "@/app/components/ui-kit/Title/Title";
+import Link from "next/link";
 
 export interface EventCardProps {
   id: number
@@ -16,8 +17,8 @@ export interface EventCardProps {
 
 export default function EventCard({title, location, date, tag}: EventCardProps) {
   return (
-    <div className={styles.wrapper}>
-      <p className={styles.avatar}></p>
+    <Link className={styles.wrapper} href={'/event'}>
+      <p className={styles.picture}></p>
       <div className={styles.content}>
         <p className={styles.date}>{date}</p>
         <Title className={styles.title}>{title}</Title>
@@ -30,6 +31,6 @@ export default function EventCard({title, location, date, tag}: EventCardProps) 
         </div>
         <p className={styles.tag}>{tag}</p>
       </div>
-    </div>
+    </Link>
   )
 }
