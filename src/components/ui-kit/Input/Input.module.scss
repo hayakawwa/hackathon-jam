@@ -1,0 +1,32 @@
+@import "@/constants/consts";
+
+.inputGroup {
+  position: relative;
+  .input {
+    border: 1px solid $base-border;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.5px;
+    padding: 20px 24px;
+    border-radius: 12px;
+
+    &::placeholder {
+      color: $base-input-placeholder;
+    }
+
+  }
+
+  .searchInput {
+    padding: 24px 24px 24px 72px;
+  }
+
+  .searchIcon {
+    position: absolute;
+    top: 27px;
+    left: 27px;
+  }
+}
+
+
+

@@ -1,0 +1,20 @@
+.wrapper {
+  width: 100%;
+  background-color: white;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  .content {
+    padding: 48px;
+    .title {
+      line-height: 28.8px;
+      margin-bottom: 24px;
+    }
+    .partners {
+      display: flex;
+      gap: 80px;
+      .partner {
+        margin: auto 0;
+      }
+    }
+  }
+}

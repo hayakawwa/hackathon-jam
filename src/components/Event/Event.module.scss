@@ -1,0 +1,15 @@
+.wrapper {
+  width: 72.2%;
+  margin: 100px auto;
+  .breadcrumbs {
+    margin-bottom: 20px;
+    color: #6E6E6E;
+  }
+  .content {
+    display: flex;
+    gap: 20px;
+    .subInfo {
+      width: 24.62%
+    }
+  }
+}

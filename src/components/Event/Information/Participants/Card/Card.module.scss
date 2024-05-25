@@ -1,0 +1,31 @@
+.wrapper {
+  border-radius: 16px;
+  border: 1px solid #B4B4B4;
+  max-width: 296px;
+  .content {
+    padding: 16px;
+    .avatar {
+      margin: 0 auto 24px auto;
+    }
+    .name {
+      font-size: 20px;
+      line-height: 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .firstName {
+      margin-bottom: 24px;
+    }
+    .tags {
+      max-width: 264px;
+      justify-content: center;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      .tag {
+        padding: 7px 14px;
+        font-size: 12px;
+      }
+    }
+  }
+}

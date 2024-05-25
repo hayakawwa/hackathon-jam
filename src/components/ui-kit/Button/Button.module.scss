@@ -1,0 +1,14 @@
+.button {
+  font-weight: 500;
+  padding: 16px 32px;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  line-height: 19.5px;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.6;
+  }
+}
