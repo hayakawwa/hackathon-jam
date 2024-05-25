@@ -1,0 +1,10 @@
+@import '@/constants/consts';
+
+.tag {
+  color: white;
+  padding: 8px 16px;
+  background-color: $base-light-blue;
+  border-radius: 12px;
+  width: max-content;
+  font-size: 16px;
+}

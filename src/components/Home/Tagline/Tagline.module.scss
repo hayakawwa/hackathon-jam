@@ -1,0 +1,22 @@
+@import "@/constants/consts";
+
+.wrapper {
+  margin: 295px auto 367px auto;
+  text-align: center;
+  p {
+    display: block;
+    margin: 0 auto 24px auto;
+    font-size: 48px;
+    width: 790px;
+    color: white;
+    line-height: 64.13px;
+  }
+  .btn {
+    background-color: $base-light-yellow;
+    padding: 20px 40px;
+    line-height: 24.38px;
+    color: black;
+    border-radius: 16px;
+    font-size: 20px;
+  }
+}

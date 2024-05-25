@@ -1,0 +1,26 @@
+.wrapper {
+  width: 100%;
+  margin-bottom: 32px;
+  .sign {
+    margin-bottom: 10px;
+  }
+  .title {
+    margin-bottom: 24px;
+  }
+  .name {
+    margin-bottom: 20px;
+    .nameInput {
+      width: 100%;
+    }
+  }
+  .subInfo {
+    display: flex;
+    gap: 20px;
+    .mail {
+      width: 50%;
+    }
+    .role {
+      width: 50%;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import '@/constants/consts';
+
+.checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid $base-dark-blue;
+  display: inline-flex;
+  align-items: center;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &:checked::before {
+    background-color: $base-dark-blue;
+    transform: scale(1);
+    background-image: url("../../../assets/checked.svg");
+
+  }
+}

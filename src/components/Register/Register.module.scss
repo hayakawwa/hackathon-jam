@@ -1,0 +1,72 @@
+@import "@/constants/consts";
+
+.layout {
+  width: 1372px;
+  margin: 32px auto 50px auto;
+
+  background-color: white;
+  border-radius: 80px;
+
+  height: 800px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+
+  padding-top: 64px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.footerText {
+  font-size: 14px;
+  line-height: 22.12px;
+  max-width: 328px;
+  text-align: left;
+
+  a {
+    color: $base-dark-blue;
+    text-decoration: underline;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.backBtn {
+  height: 48px;
+  width: 48px;
+  margin-right: 20px;
+
+  border: 1px solid #222;
+  border-radius: 10px;
+
+  img {
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+
+    display: block;
+  }
+}
+
+.buttons {
+  width: 328px;
+  display: flex;
+
+  margin: 0 auto;
+}
+
+.logo {
+  margin: 60px auto 0;
+}

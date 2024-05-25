@@ -1,0 +1,13 @@
+.filters {
+  display: flex;
+  gap: 20px;
+  .resetIcon {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      opacity: 0.6;
+    }
+  }
+}

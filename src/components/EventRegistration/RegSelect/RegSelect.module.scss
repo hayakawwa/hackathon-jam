@@ -1,0 +1,42 @@
+.selectWrapper {
+  position: relative;
+  cursor: pointer;
+  .selectBtn {
+    border: 1px solid #B4B4B4FF;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    height: 62px;
+    background-color: white;
+    padding: 24px 20px;
+    align-items: center;
+    gap: 8px;
+    .selectArrow {
+      transition: 0.5s;
+    }
+    .arrowActive {
+      transform: scaleY(-1);
+    }
+  }
+  .options {
+    position: absolute;
+    z-index: 228;
+    width: 100%;
+    top: 70px;
+    border: 1px solid #B4B4B4FF;
+    padding: 24px 20px;
+    border-radius: 8px;
+    background: white;
+    transform: scale(0);
+    transition: 60ms transform ease-in-out;
+    .item {
+      margin-bottom: 18px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .modalActive {
+    transform: scale(1);
+  }
+}

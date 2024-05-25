@@ -1,0 +1,33 @@
+@import "@/constants/consts";
+
+.header {
+  display: flex;
+  margin-top: 60px;
+  align-items: center;
+  .logo {
+    margin: 0 auto;
+  }
+  .buttons {
+    display: flex;
+    position: absolute;
+    gap: 20px;
+    right: 8.3%;
+    width: max-content;
+    .loginBtn {
+      border: 1px solid white;
+      color: white;
+    }
+    .registerBtn {
+      background-color: white;
+      color: black;
+    }
+    .loginBtnWhite {
+      border: 1px solid $base-dark-blue;
+      color: $base-dark-blue;
+    }
+    .registerBtnWhite {
+      background-color: $base-dark-blue;
+      color: white;
+    }
+  }
+}

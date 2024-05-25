@@ -1,0 +1,47 @@
+.selectWrapper {
+  position: relative;
+  cursor: pointer;
+  .selectBtn {
+    border: 1px solid #B4B4B4FF;
+    border-radius: 8px;
+
+    display: flex;
+    height: 38px;
+    background-color: white;
+    padding: 8px 16px;
+    align-items: center;
+    gap: 8px;
+    .selectArrow {
+      transition: 0.5s;
+    }
+    .arrowActive {
+      transform: scaleY(-1);
+    }
+  }
+  .options {
+    position: absolute;
+    z-index: 228;
+    width: 200px;
+    border: 1px solid #B4B4B4FF;
+    padding: 24px 20px;
+    border-radius: 8px;
+    background: white;
+    top: 46px;
+    transform: scale(0);
+    transition: 60ms transform ease-in-out;
+    .item {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .itemText {
+        font-size: 14px;
+      }
+    }
+  }
+  .modalActive {
+    transform: scale(1);
+  }
+}

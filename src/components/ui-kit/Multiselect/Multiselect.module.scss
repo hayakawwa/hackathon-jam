@@ -1,0 +1,81 @@
+@import "@/constants/consts";
+
+.multiselect {
+  position: relative;
+  width: 100%;
+}
+
+.selectedOptions {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 62px;
+  border: 1px solid $base-border;
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.option {
+  display: inline-block;
+  width: fit-content;
+  padding: 2px 7px;
+  background-color: #bebebe;
+  border-radius: 5px;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 70px;
+  width: fit-content;
+  border-radius: 7px;
+  padding: 5px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, .2);
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  fieldset {
+    border-radius: 4px;
+    transition: background-color .15s ease-in-out;
+
+    label:hover {
+      background-color: #dcdcdc;
+    }
+
+    label:active {
+      background-color: #c5c5c5;
+    }
+
+    label {
+      display: block;
+      padding: 3px 5px;
+      border-radius: 4px;
+      transition: background-color .15s ease-in-out;
+    }
+
+    input[type=checkbox]:checked + label {
+      background-color: #2b8aff;
+    }
+
+    input[type=checkbox]:checked + label:hover {
+      background-color: #167eff;
+    }
+
+    input[type=checkbox]:checked + label:active {
+      background-color: #0071ff;
+    }
+  }
+}
+
+.subText {
+  text-align: end;
+  color: $base-border;
+}

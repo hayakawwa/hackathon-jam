@@ -1,0 +1,33 @@
+@import '@/constants/consts';
+
+.wrapper {
+  background-color: white;
+  padding: 48px;
+  border-radius: 20px;
+  .title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  .iconGroup {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    .count {
+      margin: auto 0;
+    }
+  }
+  .teamTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .team {
+    .item {
+      padding: 8px 16px;
+      background-color: $base-dark-blue;
+      width: max-content;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      color: white;
+    }
+  }
+}
