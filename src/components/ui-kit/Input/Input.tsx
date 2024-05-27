@@ -28,7 +28,6 @@ const Input: FC<IInputProps> = ({onChange, placeholder = '', name,
           placeholder={placeholder}
           name={name}
           id={name}
-          value={value}
           required={required}
           onChange={onChange}
         />

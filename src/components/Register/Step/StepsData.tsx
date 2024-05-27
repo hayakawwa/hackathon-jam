@@ -46,12 +46,12 @@ export const stepsData: IStepsData = {
             {
                 title: 'Я - участник хакатона',
                 value: 'member',
-                name: 'role'
+                name: 'is_organisator'
             },
             {
                 title: 'Я - организатор хакатонов',
-                value: 'organisation',
-                name: 'role'
+                value: 'organisator',
+                name: 'is_organisator'
             },
         ]
     },

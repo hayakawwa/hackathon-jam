@@ -1,12 +1,20 @@
 import {api} from "@/api/api";
+import {UserRegisterBodySchema, UserAuthResponseSchema, UserLoginBodySchema} from "@/store/schemas/authSchema";
 
 
 // TODO: типизация
-export const autnApi  = api.injectEndpoints({
+export const authApi  = api.injectEndpoints({
     endpoints: (builder) => ({
-        login: builder.mutation({
+        login: builder.mutation<UserAuthResponseSchema, UserLoginBodySchema>({
             query: (userData) => ({
                 url: 'api/login',
+                method: 'POST',
+                body: userData,
+            })
+        }),
+        register: builder.mutation<UserAuthResponseSchema, UserRegisterBodySchema>({
+            query: (userData) => ({
+                url: 'api/register',
                 method: 'POST',
                 body: userData,
             })
@@ -14,8 +22,8 @@ export const autnApi  = api.injectEndpoints({
     })
 });
 
-export const {useLoginMutation} = autnApi;
+export const {useLoginMutation, useRegisterMutation} = authApi;
 
 export const {
-    endpoints: {login}
-} = autnApi;
+    endpoints: {login, register}
+} = authApi;
