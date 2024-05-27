@@ -7,9 +7,9 @@ import Step from "@/components/Register/Step/Step";
 import Button from "@/components/ui-kit/Button/Button";
 import BackArrow from '../../assets/back-arrow.svg';
 import Image from "next/image";
-import {useRegisterMutation} from "@/api/registerApi";
+import {useRegisterMutation} from "@/api/authApi";
 
-const currentRegFields = ['username', 'password', 'first_name', 'last_name', 'email']
+const currentRegFields = ['username', 'password', 'first_name', 'last_name', 'email', 'is_organisator']
 
 const Register = () => {
     const [register] = useRegisterMutation();
@@ -18,22 +18,44 @@ const Register = () => {
 
     const goToNextStep = () => {
         setCurrentStep(currentStep + 1);
-    }
+    };
 
     const goToPreviousStep = () => {
         setCurrentStep(currentStep - 1);
-    }
+    };
 
     const getInputs = (evt: React.FormEvent<HTMLFormElement>) => {
         // @ts-ignore
         const elements = evt.target.elements;
         const inputs = [];
         for (let i = 0; i < elements.length; i++) {
-            if (elements[i].nodeName === 'INPUT') {
-                inputs.push(elements[i]);
+            const input = elements[i];
+            if (input.nodeName === 'INPUT') {
+                inputs.push(input);
             }
         }
         return inputs;
+    };
+
+    const formOnSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+        evt.preventDefault();
+        const inputs = getInputs(evt);
+        inputs.forEach((i) => {
+            if (!currentRegFields.includes(i.name)) {
+                return
+            }
+            setUserData(prevState => {
+                if (i.name === 'is_organisator') {
+                    return {...prevState, ...{[i.name]: i.checked && i.value === 'organisator'}}
+                }
+                return {...prevState, ...{[i.name]: i.value}}
+            });
+        })
+        if (currentStep === RegisterSteps.Avatar) {
+            register(userData);
+        } else {
+            goToNextStep();
+        }
     }
 
     return (
@@ -41,23 +63,7 @@ const Register = () => {
             <div className={cls.layout}>
                 <div className={cls.wrapper}>
                     <form className={cls.form}
-                          onSubmit={(evt: React.FormEvent<HTMLFormElement>) => {
-                              evt.preventDefault();
-                              const inputs = getInputs(evt);
-                              inputs.forEach((i) => {
-                                  if (!currentRegFields.includes(i.name)) {
-                                      return
-                                  }
-                                  setUserData(prevState => {
-                                      return {...prevState, ...{[i.name]: i.value}}
-                                  });
-                              })
-                              if (currentStep === RegisterSteps.Avatar) {
-                                  register(userData);
-                              } else {
-                                  goToNextStep();
-                              }
-                          }}
+                          onSubmit={formOnSubmit}
                     >
                         <Step step={currentStep}/>
                         <div className={cls.buttons}>
@@ -70,9 +76,7 @@ const Register = () => {
                                 </button>
                             }
                             <Button
-                                color={'#1d1d1d'}
-                                width={'100%'}
-                                backgroundColor={'#E7FF43'}
+                                className={cls.btn}
                                 isSubmit={true}
                             >
                                 Продолжить
