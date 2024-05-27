@@ -52,6 +52,7 @@ const Register = () => {
             });
         })
         if (currentStep === RegisterSteps.Avatar) {
+            // @ts-ignore
             register(userData);
         } else {
             goToNextStep();

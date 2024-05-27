@@ -2,7 +2,6 @@ import {api} from "@/api/api";
 import {UserRegisterBodySchema, UserAuthResponseSchema, UserLoginBodySchema} from "@/store/schemas/authSchema";
 
 
-// TODO: типизация
 export const authApi  = api.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation<UserAuthResponseSchema, UserLoginBodySchema>({

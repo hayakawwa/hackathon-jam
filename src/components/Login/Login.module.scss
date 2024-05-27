@@ -80,8 +80,9 @@
   margin: 60px auto 0;
 }
 
-.input {
+.inputWrapper {
   margin-bottom: 24px;
+
   p {
     font-size: 16px;
     margin-bottom: 8px;
@@ -96,4 +97,14 @@
   margin-bottom: 20px;
 
   font-size: 14px;
+}
+
+.input {
+  border-radius: 12px;
+}
+
+.btn {
+  width: 100%;
+  color: $base-black-text;
+  background-color: $base-light-yellow;
 }
