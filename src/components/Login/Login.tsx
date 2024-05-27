@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import Input from "@/components/ui-kit/Input/Input";
 import Title from "@/components/ui-kit/Title/Title";
 import Button from "@/components/ui-kit/Button/Button";
-import RegisterSteps from "@/enums/RegisterSteps";
 import {useLoginMutation} from "@/api/authApi";
 
 const Login = () => {
@@ -11,28 +10,33 @@ const Login = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
+    const formOnSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+        evt.preventDefault();
+        if (email === '' || password === '') {
+            return;
+        }
+        login({email, password});
+    }
+
     return (
         <>
             <div className={cls.layout}>
                 <div className={cls.wrapper}>
                     <form className={cls.form}
-                          onSubmit={(evt: React.FormEvent<HTMLFormElement>) => {
-                              evt.preventDefault();
-                              login({email, password})
-                          }}
+                          onSubmit={formOnSubmit}
                     >
                         <header className={cls.header}>
                             <Title>Вход</Title>
                         </header>
-                        <div className={cls.input}>
+                        <div className={cls.inputWrapper}>
                             <p>Почта</p>
-                            <Input borderRadius={'12px'} name={'email'} required onChange={(evt) => {
+                            <Input className={cls.input} name={'email'} required onChange={(evt) => {
                                 setEmail(evt.target.value)
                             }}/>
                         </div>
-                        <div className={cls.input}>
+                        <div className={cls.inputWrapper}>
                             <p>Пароль</p>
-                            <Input borderRadius={'12px'} name={'password'} required isPassword onChange={(evt) => {
+                            <Input className={cls.input} name={'password'} required isPassword onChange={(evt) => {
                                 setPassword(evt.target.value)
                             }}/>
                         </div>
@@ -43,7 +47,7 @@ const Login = () => {
                             <label htmlFor="rememberMe">Запомнить меня</label>
                         </div>
 
-                        <Button backgroundColor={'#E7FF43'} color={'#1D1D1D'} width={'100%'} isSubmit>Войти</Button>
+                        <Button className={cls.btn} isSubmit>Войти</Button>
 
                         <div className={cls.footer + ''}>
                             <p className={cls.footerText}>
