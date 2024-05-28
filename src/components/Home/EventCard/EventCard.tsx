@@ -8,14 +8,12 @@ export interface EventCardProps {
   id: number
   title?: string
   date?: string
-  location?: {
-    city?: string
-    street?: string
-  }
+  city?: string
+  street?: string
   tag?: string
 }
 
-export default function EventCard({title, location, date, tag}: EventCardProps) {
+export default function EventCard({title, street, city, date, tag, id}: EventCardProps) {
   const pathname = title?.toLowerCase().replace(/ /g, '_')
 
   return (
@@ -27,8 +25,8 @@ export default function EventCard({title, location, date, tag}: EventCardProps) 
         <div className={styles.locationWrapper}>
           <Image src={locationIcon} alt={'locationIcon'}/>
           <div className={styles.location}>
-            <p className={styles.city}>{location?.city}</p>
-            <p className={styles.street}>{location?.street}</p>
+            <p className={styles.city}>{city}</p>
+            <p className={styles.street}>{street}</p>
           </div>
         </div>
         <p className={styles.tag}>{tag}</p>
