@@ -12,14 +12,22 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 
 
+export interface EventProps {
+  title?: string
+  date?: string
+  prize?: string
+  city?: string
+  street?: string
+}
 
-export default function MainInfo() {
+
+export default function MainInfo({title, street, city, date, prize}: EventProps) {
   const pathname = usePathname()
   return (
     <div className={styles.wrapper}>
       <p className={styles.picture}></p>
       <div className={styles.content}>
-        <Title className={styles.title}>TechFusion Innovate-a-Thon</Title>
+        <Title className={styles.title}>{title}</Title>
         <Link href={`${pathname}/registration`}>
           <Button className={styles.accept}>Участвовать</Button>
         </Link>
@@ -27,20 +35,20 @@ export default function MainInfo() {
         <div className={styles.itemsIcon}>
           <div className={styles.item}>
             <Image src={dateIcon} alt={'dateIcon'}/>
-            <p className={styles.info}>15 июня - 17 августа</p>
+            <p className={styles.info}>{date}</p>
           </div>
           <div className={styles.item}>
             <Image src={locationIcon} alt={'locationIcon'}/>
             <div className={`${styles.info} ${styles.locationInfo}`}>
-              <p className={`${styles.city} ${styles.topInfo}`}>г. Астрахань</p>
-              <p className={`${styles.street} ${styles.botInfo}`}>ул. Попова, 17</p>
+              <p className={`${styles.city} ${styles.topInfo}`}>{city}</p>
+              <p className={`${styles.street} ${styles.botInfo}`}>{street}</p>
             </div>
           </div>
           <div className={styles.item}>
             <Image src={prizeIcon} alt={'prizeIcon'}/>
             <div className={`${styles.info} ${styles.prizeInfo}`}>
               <p className={`${styles.prize} ${styles.topInfo}`}>Призовой фонд:</p>
-              <p className={`${styles.size} ${styles.botInfo}`}>100 тыс. рублей</p>
+              <p className={`${styles.size} ${styles.botInfo}`}>{prize}</p>
           </div>
         </div>
       </div>

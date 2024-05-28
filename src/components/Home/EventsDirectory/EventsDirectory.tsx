@@ -1,5 +1,6 @@
 'use client'
 
+import React, {useState} from "react";
 import styles from './EventsDirectory.module.scss'
 import removeIcon from '@/assets/x-white.svg'
 import Input from "@/components/ui-kit/Input/Input";
@@ -11,7 +12,7 @@ import {useAppDispatch, useAppSelector} from "@/hooks/hooks";
 import {getActiveFilters} from "@/store/selectors/eventFiltersSelector";
 import Image from "next/image";
 import {activeFiltersActions} from "@/store/slices/FiltersSlices/activeFilters.slice";
-import {useState} from "react";
+import {useGetEventsQuery} from "@/api/eventApi";
 
 
 const mockEventsData: EventCardProps[] = [
@@ -19,120 +20,96 @@ const mockEventsData: EventCardProps[] = [
     id: 1,
     title: 'Хакатон: кожаный мяч',
     date: '16 июня - 20 июня',
-    location: {
-      street: 'ул. Комсомольская, 70',
-      city: 'Екатеринбург'
-    },
+    street: 'ул. Комсомольская, 70',
+    city: 'Екатеринбург',
     tag: 'Веб-разработка',
   },
   {
     id: 2,
     title: 'Супер крутой хакатон',
     date: '16 мая - 18 мая',
-    location: {
-      street: 'ул. Мира, 19',
-      city: 'Архангельск'
-    },
+    street: 'ул. Мира, 19',
+    city: 'Архангельск',
     tag: 'Мобильная разработка',
   },
   {
     id: 3,
     title: 'Покори мир',
     date: '15 апреля - 17 апреля',
-    location: {
-      street: 'ул. Финика, 44',
-      city: 'Мурманск'
-    },
+    street: 'ул. Финика, 44',
+    city: 'Мурманск',
     tag: 'Робототехника',
   },
   {
     id: 4,
     title: 'Уральский областной хакатон',
     date: '15 января - 17 января',
-    location: {
-      street: 'ул. Фурманова, 228',
-      city: 'Саратов'
-    },
+    street: 'ул. Фурманова, 228',
+    city: 'Саратов',
     tag: 'No-code',
   },
   {
     id: 1,
     title: 'Хакатон: кожаный мяч',
     date: '16 июня - 20 июня',
-    location: {
-      street: 'ул. Комсомольская, 70',
-      city: 'Екатеринбург'
-    },
+    street: 'ул. Комсомольская, 70',
+    city: 'Екатеринбург',
     tag: 'Веб-разработка',
   },
   {
     id: 2,
     title: 'Супер крутой хакатон',
     date: '16 мая - 18 мая',
-    location: {
-      street: 'ул. Мира, 19',
-      city: 'Архангельск'
-    },
+    street: 'ул. Мира, 19',
+    city: 'Архангельск',
     tag: 'Мобильная разработка',
   },
   {
     id: 3,
     title: 'Покори мир',
     date: '15 апреля - 17 апреля',
-    location: {
-      street: 'ул. Финика, 44',
-      city: 'Мурманск'
-    },
+    street: 'ул. Финика, 44',
+    city: 'Мурманск',
     tag: 'Робототехника',
   },
   {
     id: 4,
     title: 'Уральский областной хакатон',
     date: '15 января - 17 января',
-    location: {
-      street: 'ул. Фурманова, 228',
-      city: 'Саратов'
-    },
+    street: 'ул. Фурманова, 228',
+    city: 'Саратов',
     tag: 'No-code',
   },
   {
     id: 1,
     title: 'Хакатон: кожаный мяч',
     date: '16 июня - 20 июня',
-    location: {
-      street: 'ул. Комсомольская, 70',
-      city: 'Екатеринбург'
-    },
+    street: 'ул. Комсомольская, 70',
+    city: 'Екатеринбург',
     tag: 'Веб-разработка',
   },
   {
     id: 2,
     title: 'Супер крутой хакатон',
     date: '16 мая - 18 мая',
-    location: {
-      street: 'ул. Мира, 19',
-      city: 'Архангельск'
-    },
+    street: 'ул. Мира, 19',
+    city: 'Архангельск',
     tag: 'Мобильная разработка',
   },
   {
     id: 3,
     title: 'Покори мир',
     date: '15 апреля - 17 апреля',
-    location: {
-      street: 'ул. Финика, 44',
-      city: 'Мурманск'
-    },
+    street: 'ул. Финика, 44',
+    city: 'Мурманск',
     tag: 'Робототехника',
   },
   {
     id: 4,
     title: 'Уральский областной хакатон',
     date: '15 января - 17 января',
-    location: {
-      street: 'ул. Фурманова, 228',
-      city: 'Саратов'
-    },
+    street: 'ул. Фурманова, 228',
+    city: 'Саратов',
     tag: 'No-code',
   },
 ]
@@ -140,12 +117,17 @@ const mockEventsData: EventCardProps[] = [
 export default function EventsDirectory() {
   const ITEMS_LIMIT = 9;
   const [visible, setVisible] = useState(ITEMS_LIMIT)
+  const [filtered, setFiltered] = useState<EventCardProps[]>(mockEventsData)
   const activeFilters = useAppSelector(getActiveFilters).filter(item => item.checked)
   const dispatch = useAppDispatch()
+
+  const {data = [], isError, isLoading} = useGetEventsQuery();
 
   const removeFilterItem = (value?: string) => {
     dispatch(activeFiltersActions.removeFilterItem({value}))
   }
+
+  console.log(data)
 
   const showMoreItems = () => {
     setVisible((prevState) => prevState + 3)
@@ -175,7 +157,7 @@ export default function EventsDirectory() {
         </section>
         <section className={styles.eventsContainer}>
           {mockEventsData.slice(0, visible).map((item) => (
-            <EventCard key={item.id} id={item.id} tag={item.tag} date={item.date} title={item.title} location={item.location}/>
+            <EventCard id={item.id} tag={item.tag} date={item.date} title={item.title} city={item.city} street={item.street}/>
           ))}
         </section>
         <div className={`${styles.showMoreWrapper} ${mockEventsData.length <= ITEMS_LIMIT && styles.disable}`}>
