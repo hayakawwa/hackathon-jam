@@ -63,6 +63,11 @@
       gap: 20px;
       flex-wrap: wrap;
       margin-bottom: 32px;
+      .error {
+        margin: 0 auto;
+        font-weight: 500;
+        font-size: 24px;
+      }
     }
     .showMoreWrapper {
       display: flex;

@@ -10,18 +10,22 @@ import prizeIcon from '@/assets/prize-icon.svg'
 import Tag from "@/components/ui-kit/Tag/Tag";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
-
+import {formattedDay} from "@/utils/utils";
 
 export interface EventProps {
   title?: string
-  date?: string
   prize?: string
-  city?: string
-  street?: string
+  location?: string
+  start_date?: string
+  end_date?: string
+  tags?: string[]
 }
 
+export default function MainInfo({title, prize, start_date, end_date, location, tags}: EventProps) {
 
-export default function MainInfo({title, street, city, date, prize}: EventProps) {
+  const start_time = start_date && formattedDay(start_date)
+  const end_time = end_date && formattedDay(end_date)
+
   const pathname = usePathname()
   return (
     <div className={styles.wrapper}>
@@ -31,18 +35,19 @@ export default function MainInfo({title, street, city, date, prize}: EventProps)
         <Link href={`${pathname}/registration`}>
           <Button className={styles.accept}>Участвовать</Button>
         </Link>
-        <Tag className={styles.tag}>тэг мероприятия</Tag>
+        <div className={styles.tags}>
+          {tags && tags.map(tag => (
+            <Tag className={styles.tag}>{tag}</Tag>
+          ))}
+        </div>
         <div className={styles.itemsIcon}>
           <div className={styles.item}>
             <Image src={dateIcon} alt={'dateIcon'}/>
-            <p className={styles.info}>{date}</p>
+            <p className={styles.info}><span>{start_time}</span> - <span>{end_time}</span></p>
           </div>
           <div className={styles.item}>
             <Image src={locationIcon} alt={'locationIcon'}/>
-            <div className={`${styles.info} ${styles.locationInfo}`}>
-              <p className={`${styles.city} ${styles.topInfo}`}>{city}</p>
-              <p className={`${styles.street} ${styles.botInfo}`}>{street}</p>
-            </div>
+            <div className={`${styles.info} ${styles.locationInfo}`}>{location}</div>
           </div>
           <div className={styles.item}>
             <Image src={prizeIcon} alt={'prizeIcon'}/>

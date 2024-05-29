@@ -27,9 +27,14 @@
       color: black;
       width: 168px;
     }
-    .tag {
-      margin-bottom: 20px;
+    .tags {
+      display: flex;
+      gap: 10px;
+      .tag {
+        margin-bottom: 20px;
+      }
     }
+
     .itemsIcon {
       width: 928px;
       display: grid;

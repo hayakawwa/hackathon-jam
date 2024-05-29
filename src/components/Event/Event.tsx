@@ -1,26 +1,25 @@
+'use client'
+
 import Information from "@/components/Event/Information/Information";
 import styles from './Event.module.scss'
 import Map from "@/components/Event/Map/Map";
 import Requirements from "@/components/Event/Requirements/Requirements";
 import {EventProps} from "@/components/Event/Information/MainInfo/MainInfo";
+import {usePathname} from "next/navigation";
+import {useGetEventByNameQuery, useGetEventsQuery} from "@/api/eventApi";
+import Link from "next/link";
 export default function EventItem() {
-
-  const mockMainInfo: EventProps = {
-    title: `TechFusion Innovate-a-Thon`,
-    date: '24 декабря - 31 декабря',
-    prize: '25 тыс. рублей',
-    city: 'Екатеринбург',
-    street: 'ул. Мира, 19'
-  }
+  const pathname = usePathname().split('/').slice(-1)[0]
+  const {data, isLoading, isError} = useGetEventByNameQuery(pathname)
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.breadcrumbs}>Каталог событий / <span className={styles.currentPage}>{mockMainInfo.title}</span></div>
+      <div className={styles.breadcrumbs}><Link href={'/home'}>Каталог событий</Link> / <span className={styles.currentPage}>{data?.name}</span></div>
       <div className={styles.content}>
-        <Information mainInfo={mockMainInfo}/>
+        <Information data={data}/>
         <div className={styles.subInfo}>
           <Map/>
-          <Requirements/>
+          <Requirements data={data}/>
         </div>
       </div>
     </div>
