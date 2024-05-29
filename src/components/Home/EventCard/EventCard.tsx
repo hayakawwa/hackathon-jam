@@ -3,33 +3,39 @@ import Image from "next/image";
 import locationIcon from '@/assets/location-item.svg'
 import Title from "@/components/ui-kit/Title/Title";
 import Link from "next/link";
+import {formattedDay} from "@/utils/utils";
+
 
 export interface EventCardProps {
-  id: number
-  title?: string
-  date?: string
-  city?: string
-  street?: string
-  tag?: string
+  name?: string
+  start_date?: string
+  end_date?: string
+  location?: string
+  tags?: string[]
+  urid?: string
 }
 
-export default function EventCard({title, street, city, date, tag, id}: EventCardProps) {
-  const pathname = title?.toLowerCase().replace(/ /g, '_')
+export default function EventCard({name, location, start_date, end_date, tags, urid}: EventCardProps) {
+  // const pathname = urid?.toLowerCase().replace(/ /g, '_')
+
+  const start_time = start_date && formattedDay(start_date)
+  const end_time = end_date && formattedDay(end_date)
 
   return (
-    <Link className={styles.wrapper} href={`home/${pathname}`}>
+    <Link className={styles.wrapper} href={`home/${urid}`}>
       <p className={styles.picture}></p>
       <div className={styles.content}>
-        <p className={styles.date}>{date}</p>
-        <Title className={styles.title}>{title}</Title>
+        <p className={styles.date}><span>{start_time}</span> - <span>{end_time}</span></p>
+        <Title className={styles.title}>{name}</Title>
         <div className={styles.locationWrapper}>
           <Image src={locationIcon} alt={'locationIcon'}/>
-          <div className={styles.location}>
-            <p className={styles.city}>{city}</p>
-            <p className={styles.street}>{street}</p>
-          </div>
+          <div className={styles.location}>{location}</div>
         </div>
-        <p className={styles.tag}>{tag}</p>
+        <div className={styles.tags}>
+          {tags?.map(tag => (
+            <p className={styles.tag}>{tag}</p>
+          ))}
+        </div>
       </div>
     </Link>
   )
