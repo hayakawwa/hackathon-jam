@@ -12,22 +12,24 @@ export interface IInputProps {
     required?: boolean,
     isPassword?: boolean,
     isSearch?: boolean
+    isDisabled?: boolean
 }
 
 // TODO: добавить отображение обязательных полей
 
 const Input: FC<IInputProps> = ({onChange, placeholder = '', name,
                                     className = '', value, required = false,
-                                    isPassword, isSearch
+                                    isPassword, isSearch, isDisabled = false
                                 }) => {
     return (
       <div className={styles.inputGroup}>
         <input
-          className={`${styles.input} ${className} ${isSearch && styles.searchInput}`}
+          className={`${styles.input} ${className} ${isDisabled && styles.disabled} ${isSearch && styles.searchInput}`}
           type={isPassword ? 'password' : 'text'}
           placeholder={placeholder}
           name={name}
           id={name}
+          disabled={isDisabled}
           required={required}
           onChange={onChange}
         />
