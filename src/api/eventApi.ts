@@ -14,11 +14,18 @@ export const eventApi  = api.injectEndpoints({
     }),
     getEventByName: builder.query<EventSchema, string>({
       query: (urid: string) => `/api/event/${urid}`
+    }),
+    createEvent: builder.mutation({
+      query: (data) => ({
+        url: 'api/event/create',
+        body: data,
+        method: 'POST'
+      })
     })
   })
 });
 
-export const {useGetEventsQuery, useGetEventByNameQuery} = eventApi;
+export const {useGetEventsQuery, useGetEventByNameQuery, useCreateEventMutation} = eventApi;
 
 export const {
   endpoints: {getEvents, getEventByName}

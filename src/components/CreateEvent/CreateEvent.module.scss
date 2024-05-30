@@ -1,0 +1,85 @@
+@import '@/constants/consts';
+
+
+.wrapper {
+  width: 71.46%;
+  margin: 72px auto;
+  .create {
+    margin-bottom: 20px;
+    padding: 48px;
+    background-color: white;
+    border-radius: 20px;
+    .confirmTitle {
+      margin-bottom: 32px;
+    }
+    .toHomeBtn {
+      background-color: $base-light-yellow;
+      color: black;
+    }
+    .inputName {
+      margin-bottom: 8px;
+    }
+    .titleBlock {
+      display: flex;
+      align-items: center;
+    }
+    .photoWrapper {
+      margin-bottom: 32px;
+      .title {
+        font-size: 32px;
+        margin-bottom: 32px;
+      }
+      .addPhotoBtn {
+        color: $base-dark-blue;
+        border: 1px solid $base-dark-blue;
+      }
+    }
+    .titleBlock {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+      .switchWrapper {
+        .switch {
+          margin-right: 12px;
+        }
+        position: absolute;
+        left: calc(50% + 10px);
+      }
+    }
+
+    .req {
+      width: calc(50% - 10px);
+      .reqTitle {
+        margin-bottom: 24px;
+      }
+      .count {
+        margin-bottom: 24px;
+      }
+      .lineUp {
+
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    gap: 20px;
+    .createBtn {
+      background-color: $base-light-yellow;
+      color: black;
+    }
+    .reviewBtn, .clearBtn {
+      color: black;
+      border: 1px solid black;
+    }
+  }
+  .error {
+    margin-top: 20px;
+    border-radius: 12px;
+    width: max-content;
+    padding: 14px;
+    color: red;
+    border: 1px solid red;
+  }
+}
+

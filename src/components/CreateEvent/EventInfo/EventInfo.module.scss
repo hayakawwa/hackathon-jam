@@ -1,0 +1,34 @@
+.info {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 32px;
+  .mainInfo {
+    width: 50%;
+    .eventName {
+      margin-bottom: 20px;
+    }
+    .link {
+      margin-bottom: 20px;
+    }
+    .tags {
+      margin-bottom: 20px;
+    }
+    .dates {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      .item {
+        width: 50%;
+      }
+    }
+    .prize {
+      width: calc(50% - 10px);
+    }
+  }
+  .location {
+    width: 50%;
+    .locationInput {
+      margin-bottom: 24px;
+    }
+  }
+}

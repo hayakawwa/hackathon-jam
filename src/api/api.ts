@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://51.250.98.93/',
+  baseUrl: process.env.NEXT_PUBLIC_URL,
 });
 
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 1 });
