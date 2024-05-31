@@ -8,6 +8,8 @@ import Link from "next/link";
 import Button from "@/components/ui-kit/Button/Button";
 import {usePathname} from "next/navigation";
 import {BLUE_BACKGROUND} from "@/constants/consts";
+import notifications from '@/assets/notifications.svg';
+
 export default function Header() {
   const pathname = usePathname()
 
@@ -17,15 +19,21 @@ export default function Header() {
         <Image src={logoWhite} alt={'logo'} className={styles.logo}/> :
         <Image src={logoBlack} alt={'logo'} className={styles.logo}/>
       }
-      {!['/register', '/login'].includes(pathname) &&
+      {!['/register', '/login'].includes(pathname) && !localStorage.getItem('access_token') &&
       <div className={styles.buttons}>
-        <Link href={''}>
+        <Link href={'/login'}>
           <Button className={`${styles.loginBtn} ${!BLUE_BACKGROUND.includes(pathname) ? styles.loginBtnWhite : ''}`}>Войти</Button>
         </Link>
         <Link href={'/register'}>
           <Button className={`${styles.registerBtn} ${!BLUE_BACKGROUND.includes(pathname) ? styles.registerBtnWhite : ''}`}>Зарегистрироваться</Button>
         </Link>
       </div>}
+      {localStorage.getItem('access_token') &&
+      <div className={styles.buttons}>
+        <Image src={notifications} alt={'уведомления'}/>
+        
+      </div>
+      }
     </nav>
   )
 }

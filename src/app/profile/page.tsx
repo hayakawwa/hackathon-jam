@@ -3,6 +3,6 @@ import Profile from "@/components/Profile/Profile";
 
 export default function ProfilePage({ params }: { params: { slug: string } }) {
     return (
-        <Profile/>
+        <Profile isCurrentProfile={true}/>
     );
 }

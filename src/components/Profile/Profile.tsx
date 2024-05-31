@@ -6,14 +6,43 @@ import Information from "@/components/Profile/Information/Information";
 import Skills from "@/components/Profile/Skills/Skills";
 import About from "@/components/Profile/About/About";
 import {useGetCurrentProfileMutation, useGetProfileQuery} from "@/api/profileApi";
-import {useEffect} from "react";
+import {FC, useEffect, useState} from "react";
 import {useAppSelector} from "@/hooks/hooks";
-import {getProfileData} from "@/store/selectors/profileSelector";
-import {usePathname} from "next/navigation";
+import {getCurrentUsername, getProfileData} from "@/store/selectors/profileSelector";
+import {redirect, usePathname} from "next/navigation";
+import {set} from "immutable";
+import {ProfileSchema} from "@/store/types/ProfileSchema";
 
-export default function Profile() {
-    const pathname = usePathname().split('/').slice(-1)[0];
+interface IProfileProps {
+    isCurrentProfile: boolean;
+}
+
+const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
+    const pathnameUsername = usePathname().split('/').slice(-1)[0];
+
+    const [otherUserData, setOtherUserData] = useState<ProfileSchema>({});
+
+    if (localStorage.getItem('username') === pathnameUsername) {
+        redirect('/profile')
+    }
+
     const [getCurrentProfile, {isLoading}] = useGetCurrentProfileMutation();
+    const {data, isSuccess} = useGetProfileQuery(pathnameUsername);
+
+    useEffect(() => {
+        if (!isCurrentProfile) {
+            return
+        }
+        getCurrentProfile({
+            access_token: localStorage.getItem('access_token') as string
+        });
+    }, []);
+
+    useEffect(() => {
+        if (isSuccess) {
+            setOtherUserData(data);
+        }
+    }, [isSuccess]);
 
     const {
         first_name: firstName,
@@ -24,21 +53,23 @@ export default function Profile() {
         location,
         work_place: workPlace,
         work_time: workTime
-    } = useAppSelector(getProfileData);
+    } = !isCurrentProfile ? otherUserData : useAppSelector(getProfileData);
 
-    useEffect(() => {
-        getCurrentProfile({
-            access_token: localStorage.getItem('access_token') as string
-        });
-    }, []);
+    const check = () => {
+        if (isCurrentProfile) {
+            return !isLoading;
+        } else {
+            return isSuccess;
+        }
+    }
 
     return (
         <main className={cls.main}>
-            {!isLoading &&
+            {check() &&
                 <>
                     <div className={cls.cover}></div>
                     <div className={cls.mainInfo}>
-                        <Header firstName={firstName as string} lastName={lastName as string} avatar={avatar as string} username={username as string}/>
+                        <Header firstName={firstName as string} lastName={lastName as string} avatar={avatar as string} username={username as string} isCurrentProfile={isCurrentProfile}/>
                         <div className={cls.blocks}>
                             <Information className={cls.block} location={location as string} workPlace={workPlace as string} workTime={workTime as string}/>
                             <Skills className={cls.block} username={username as string}/>
@@ -50,3 +81,5 @@ export default function Profile() {
         </main>
     )
 }
+
+export default Profile;

@@ -4,18 +4,27 @@ import Input from "@/components/ui-kit/Input/Input";
 import Title from "@/components/ui-kit/Title/Title";
 import Button from "@/components/ui-kit/Button/Button";
 import {useLoginMutation} from "@/api/authApi";
+import {useRouter} from "next/navigation";
 
 const Login = () => {
     const [login] = useLoginMutation();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const router = useRouter();
 
     const formOnSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
         if (email === '' || password === '') {
             return;
         }
-        login({email, password});
+        const result = login({email, password});
+        result.then((result) => {
+            // @ts-ignore
+            if (result.error) {
+                return
+            }
+            router.push('/home');
+        });
     }
 
     return (

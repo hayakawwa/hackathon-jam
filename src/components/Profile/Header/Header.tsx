@@ -11,9 +11,10 @@ interface IHeaderProps {
     lastName: string,
     username: string,
     avatar: string,
+    isCurrentProfile: boolean,
 }
 
-const Header: FC<IHeaderProps> = ({firstName, lastName, avatar, username}) => {
+const Header: FC<IHeaderProps> = ({firstName, lastName, avatar, username, isCurrentProfile}) => {
     return (
         <section className={cls.wrapper}>
             <img className={cls.avatar} src="https://placeholder.com/220" alt="Аватар" width={220} height={220}/>
@@ -22,8 +23,10 @@ const Header: FC<IHeaderProps> = ({firstName, lastName, avatar, username}) => {
                     <h2 className={cls.name}>{lastName} {firstName}</h2>
                     <p className={cls.username}>@{username}</p>
                 </div>
-                {/*<Button className={cls.inviteBtn}>Пригласить в команду</Button>*/}
-                <Button className={cls.editBtn}>Редактировать</Button>
+                {isCurrentProfile
+                    ? <Button className={cls.editBtn}>Редактировать</Button>
+                    : <Button className={cls.inviteBtn}>Пригласить в команду</Button>
+                }
             </div>
         </section>
     )
