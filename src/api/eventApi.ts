@@ -6,7 +6,7 @@ interface getEventsResponse {
   events?: EventSchema[]
 }
 
-// TODO: типизация
+
 export const eventApi  = api.injectEndpoints({
   endpoints: (builder) => ({
     getEvents: builder.query<getEventsResponse, void>({

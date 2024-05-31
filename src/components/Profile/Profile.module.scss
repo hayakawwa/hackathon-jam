@@ -1,0 +1,33 @@
+.main {
+  width: 71.46%;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 115px auto 0;
+}
+
+.mainInfo {
+  max-width: 100%;
+  padding: 270px 48px 48px;
+}
+
+.cover {
+  width: 71.46%;
+  height: 350px;
+  background: linear-gradient(to right, #E7FF43, #88ACCE, #6D94F6);
+  border-radius: 20px;
+  position: absolute;
+}
+
+.blocks {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.block {
+  //width: 49.216%;
+  width: 100%;
+  max-width: 622px;
+}
