@@ -1,32 +1,43 @@
 @import '@/constants/consts';
 
-.wrapper {
+.layout {
   width: 71.46%;
-  background-color: white;
-  border-radius: 20px;
   margin: 110px auto 60px auto;
-  .content {
-    width: 53.24%;
-    padding: 48px;
-    .title {
-      font-size: 32px;
-      margin-bottom: 20px;
+  .breadcrumbs {
+    margin-bottom: 20px;
+    color: #6E6E6E;
+    font-weight: 500;
+    .currentPage {
+      color: $base-dark-blue;
     }
-    .req {
-      margin-bottom: 20px;
-    }
-    .people {
-      margin-bottom: 32px;
-    }
-    .team {
-      margin-bottom: 32px;
-      .teamName {
-        margin-bottom: 10px;
+  }
+  .wrapper {
+    background-color: white;
+    border-radius: 20px;
+    .content {
+      width: 53.24%;
+      padding: 48px;
+      .title {
+        font-size: 32px;
+        margin-bottom: 20px;
       }
-    }
-    .buttonReg {
-      background-color: $base-light-yellow;
-      color: black;
+      .req {
+        margin-bottom: 20px;
+      }
+      .people {
+        margin-bottom: 32px;
+      }
+      .team {
+        margin-bottom: 32px;
+        .teamName {
+          margin-bottom: 10px;
+        }
+      }
+      .buttonReg {
+        background-color: $base-light-yellow;
+        color: black;
+      }
     }
   }
 }
+

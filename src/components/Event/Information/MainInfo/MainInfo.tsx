@@ -7,6 +7,7 @@ import Image from "next/image";
 import locationIcon from "@/assets/location-item.svg";
 import dateIcon from '@/assets/date-icon.svg'
 import prizeIcon from '@/assets/prize-icon.svg'
+import orgIcon from '@/assets/org-icon.svg'
 import Tag from "@/components/ui-kit/Tag/Tag";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
@@ -19,14 +20,19 @@ export interface EventProps {
   start_date?: string
   end_date?: string
   tags?: string[]
+  organisators?: {
+    email: string
+    username: string
+  }[]
+
 }
 
-export default function MainInfo({title, prize, start_date, end_date, location, tags}: EventProps) {
+export default function MainInfo({title, prize, start_date, end_date, location, tags, organisators}: EventProps) {
 
   const start_time = start_date && formattedDay(start_date)
   const end_time = end_date && formattedDay(end_date)
-
   const pathname = usePathname()
+
   return (
     <div className={styles.wrapper}>
       <p className={styles.picture}></p>
@@ -54,9 +60,16 @@ export default function MainInfo({title, prize, start_date, end_date, location, 
             <div className={`${styles.info} ${styles.prizeInfo}`}>
               <p className={`${styles.prize} ${styles.topInfo}`}>Призовой фонд:</p>
               <p className={`${styles.size} ${styles.botInfo}`}>{prize}</p>
+            </div>
+          </div>
+          <div className={styles.item}>
+            <Image src={orgIcon} alt={'orgIcon'}/>
+            <div className={`${styles.info}`}>
+              <p className={`${styles.topInfo}`}>Организатор:</p>
+              <p className={`${styles.org} ${styles.botInfo}`}>{organisators && organisators[0].email}</p>
+            </div>
           </div>
         </div>
-      </div>
     </div>
 </div>
   )

@@ -41,20 +41,19 @@ export default function CreateEvent() {
   const body: CreateEventBody = {
     access_token: '58af532fb5c6c62f2a6a694d94fc7939',
     desc: desc,
-    end_time: '2019-08-24T14:15:22Z',
+    end_time: endDate && toISOFormat(endDate),
     icon: '',
     is_irl: checked,
     location: location,
     name: name,
     prize: prize,
     requirements: '1',
-    start_time: '2019-08-24T14:15:22Z',
+    start_time: startDate && toISOFormat(startDate),
     team_requirements_type: 0,
     team_requirements_value: count,
     urid: link
   }
 
-  const f = toISOFormat(endDate)
 
   const onCreateButtonClick = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
