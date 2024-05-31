@@ -8,13 +8,15 @@ import Button from "@/components/ui-kit/Button/Button";
 import BackArrow from '../../assets/back-arrow.svg';
 import Image from "next/image";
 import {useRegisterMutation} from "@/api/authApi";
+import {useRouter} from "next/navigation";
 
 const currentRegFields = ['username', 'password', 'first_name', 'last_name', 'email', 'is_organisator']
 
 const Register = () => {
     const [register] = useRegisterMutation();
     const [currentStep, setCurrentStep] = useState<RegisterSteps>(RegisterSteps.Initial);
-    const [userData, setUserData] = useState({})
+    const [userData, setUserData] = useState({});
+    const router = useRouter();
 
     const goToNextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -53,7 +55,14 @@ const Register = () => {
         })
         if (currentStep === RegisterSteps.Avatar) {
             // @ts-ignore
-            register(userData);
+            const result = register(userData);
+            result.then((result) => {
+                // @ts-ignore
+                if (result.error) {
+                    return
+                }
+                router.push('/home');
+            });
         } else {
             goToNextStep();
         }

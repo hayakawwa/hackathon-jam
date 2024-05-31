@@ -12,11 +12,11 @@ interface ISkillsProps {
 }
 
 const Skills: FC<ISkillsProps> = ({className, username}) => {
-    const {data, isLoading} = useGetSkillsQuery(username);
+    const {data, isLoading, isSuccess} = useGetSkillsQuery(username);
 
     return (
         <section className={`${cls.wrapper} ${className}`}>
-            {!isLoading &&
+            {isSuccess &&
                 <>
                     <h2 className={cls.header}>Навыки</h2>
                     <div className={cls.skills}>
