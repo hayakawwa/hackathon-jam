@@ -18,10 +18,10 @@ export default function EventFilters() {
 
   return (
     <div className={styles.filters}>
-      <Select id={1} name={'Даты'} data={DATES}>Даты</Select>
-      <Select id={2} name={'Локация'} data={CITIES}>Локация</Select>
-      <Select id={3} name={'Формат'} data={FORMAT}>Формат</Select>
-      <Select id={4} name={'Сфера'} data={DIRECTIONS}>Сфера</Select>
+      <Select key={1} id={1} name={'Даты'} data={DATES}>Даты</Select>
+      <Select key={2} id={2} name={'Локация'} data={CITIES}>Локация</Select>
+      <Select key={3} id={3} name={'Формат'} data={FORMAT}>Формат</Select>
+      <Select key={4} id={4} name={'Сфера'} data={DIRECTIONS}>Сфера</Select>
       <Image src={reset} alt={'reset'} className={styles.resetIcon} onClick={removeAll}/>
     </div>
   )

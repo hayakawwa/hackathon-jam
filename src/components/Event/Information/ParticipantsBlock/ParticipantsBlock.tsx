@@ -33,7 +33,9 @@ export default function ParticipantsBlock({users, pathname}: ParticipantsProps) 
         </Link>
         <div className={styles.cards}>
           {users?.slice(0, visible).map((item) => (
-            <Card firstName={item.first_name} lastName={item.last_name} className={styles.card}/>
+            <Link href={`/profile/${item.username}`}>
+              <Card firstName={item.first_name} lastName={item.last_name} className={styles.card}/>
+            </Link>
           ))}
         </div>
         <div className={`${styles.btnWrapper} ${users && users.length <= ITEMS_LIMIT && styles.disable}`}>

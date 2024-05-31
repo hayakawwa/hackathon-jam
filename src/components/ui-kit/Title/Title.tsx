@@ -2,7 +2,7 @@ import cls from './Title.module.scss';
 import {FC} from "react";
 
 interface ITitleProps {
-    children: string,
+    children?: string,
     className?: string
 }
 
