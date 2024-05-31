@@ -36,11 +36,11 @@ export default function EventInfo({setName, setLocation, setPrize, setEndDate, s
         <div className={styles.dates}>
           <div className={styles.item}>
             <p className={styles.inputName}>Дата начала</p>
-            <Input name={'дата начала'} required={true} onChange={(e) => setStartDate(e.target.value)}/>
+            <Input className={styles.dateInput} name={'дата начала'} required={true} type={'date'} onChange={(e) => setStartDate(e.target.value)}/>
           </div>
           <div className={styles.item}>
             <p className={styles.inputName}>Дата окончания</p>
-            <Input name={'дата окончания'} required={true} onChange={(e) => setEndDate(e.target.value)}/>
+            <Input className={styles.dateInput} name={'дата окончания'} required={true} type={'date'} onChange={(e) => setEndDate(e.target.value)}/>
           </div>
         </div>
         <div className={styles.prize}>

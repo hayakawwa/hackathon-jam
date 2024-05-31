@@ -1,0 +1,48 @@
+@import '@/constants/consts';
+
+.wrapper {
+  width: 71.46%;
+  background-color: white;
+  margin: 110px auto 105px auto;
+  padding: 48px;
+  border-radius: 20px;
+  .infoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    .title {
+      line-height: 29.26px;
+    }
+    .publicBtn {
+      border: 1px solid $base-dark-blue;
+      color: $base-dark-blue
+    }
+  }
+  .label {
+    margin-bottom: 32px;
+  }
+  .cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .btnWrapper {
+    display: flex;
+    justify-content: center;
+
+    .scaleBtn {
+      background-color: $base-light-yellow;
+      color: black;
+      margin: 0 auto;
+    }
+  }
+
+  .disable {
+    scale: 0;
+    margin: 0;
+  }
+
+}

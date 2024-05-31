@@ -1,10 +1,7 @@
 import {api} from "@/api/api";
 import {EventSchema} from "@/store/types/EventSchema";
+import {exitEventBody, getEventsResponse, getUserBody, getUsersResponse, joinEventBody, User} from "@/api/types";
 
-interface getEventsResponse {
-  count: number
-  events?: EventSchema[]
-}
 
 // TODO: типизация
 export const eventApi  = api.injectEndpoints({
@@ -21,11 +18,33 @@ export const eventApi  = api.injectEndpoints({
         body: data,
         method: 'POST'
       })
-    })
+    }),
+    joinEvent: builder.mutation({
+      query: (body: joinEventBody) => ({
+        url: `api/event/${body.urid}/join`,
+        body: {access_token: body.access_token},
+        method: 'POST'
+      })
+    }),
+    getUsers: builder.mutation<getUsersResponse, getUserBody>({
+      query: (body: getUserBody) => ({
+        url: `api/event/${body.urid}/search-member`,
+        body: {skills_to_search: []},
+        method: 'POST'
+      })
+    }),
+    exitEvent: builder.mutation({
+      query: (body: exitEventBody) => ({
+        url: `api/event/${body.urid}/exit`,
+        body: {access_token: body.access_token},
+        method: 'POST'
+      })
+    }),
   })
 });
 
-export const {useGetEventsQuery, useGetEventByNameQuery, useCreateEventMutation} = eventApi;
+export const {useGetEventsQuery, useGetEventByNameQuery
+  , useCreateEventMutation, useJoinEventMutation, useGetUsersMutation, useExitEventMutation} = eventApi;
 
 export const {
   endpoints: {getEvents, getEventByName}

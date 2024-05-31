@@ -16,8 +16,6 @@ export interface EventCardProps {
 }
 
 export default function EventCard({name, location, start_date, end_date, tags, urid}: EventCardProps) {
-  // const pathname = urid?.toLowerCase().replace(/ /g, '_')
-
   const start_time = start_date && formattedDay(start_date)
   const end_time = end_date && formattedDay(end_date)
 

@@ -2,6 +2,20 @@
   display: flex;
   gap: 20px;
   margin-bottom: 32px;
+  .inputName {
+    margin-bottom: 8px;
+  }
+  .dateInput {
+    position: relative;
+    padding: 16px 18px;
+    &::-webkit-calendar-picker-indicator {
+      background: url("../../../assets/calendar.svg") no-repeat center;
+      width: 23.5px;
+      height: 23.5px;
+      cursor: pointer;
+    }
+
+  }
   .mainInfo {
     width: 50%;
     .eventName {

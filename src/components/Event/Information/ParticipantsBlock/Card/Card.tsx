@@ -5,18 +5,22 @@ import Tag from "@/components/ui-kit/Tag/Tag";
 
 interface CardProps {
   className?: string
+  lastName?: string
+  firstName?: string
 }
-export default function Card({className}: CardProps) {
+
+const TAGS = [1,2,3]
+export default function Card({className, lastName, firstName}: CardProps) {
   return (
     <div className={`${styles.wrapper} ${className}`}>
       <div className={styles.content}>
         <Image src={avatar} alt={'avatar'} className={styles.avatar}/>
-        <p className={`${styles.lastName} ${styles.name}`}>Кузнецова</p>
-        <p className={`${styles.firstName} ${styles.name}`}>Анастасия</p>
+        <p className={`${styles.lastName} ${styles.name}`}>{lastName}</p>
+        <p className={`${styles.firstName} ${styles.name}`}>{firstName}</p>
         <div className={styles.tags}>
-          <Tag className={styles.tag}>Adobe Illustrator</Tag>
-          <Tag className={styles.tag}>Дизайн</Tag>
-          <Tag className={styles.tag}>Figma</Tag>
+          {TAGS.map((item) => (
+            <Tag className={styles.tag}>Заглушка</Tag>
+          ))}
         </div>
       </div>
     </div>

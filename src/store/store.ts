@@ -4,11 +4,13 @@ import {activeFiltersReducer} from "@/store/slices/FiltersSlices/activeFilters.s
 import {api} from "@/api/api";
 import {listenerMiddleware} from "@/store/models/auth";
 import {authApi} from "@/api/authApi";
+import {eventsReducer} from "@/store/slices/events.slice";
 
 const rootReducer = combineReducers({
   [api.reducerPath]: api.reducer,
   eventFilters: eventFiltersReducer,
-  activeFilters: activeFiltersReducer
+  activeFilters: activeFiltersReducer,
+  events: eventsReducer
 })
 
 export const setupStore = () => {
