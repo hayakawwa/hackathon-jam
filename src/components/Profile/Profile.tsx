@@ -8,9 +8,8 @@ import About from "@/components/Profile/About/About";
 import {useGetCurrentProfileMutation, useGetProfileQuery} from "@/api/profileApi";
 import {FC, useEffect, useState} from "react";
 import {useAppSelector} from "@/hooks/hooks";
-import {getCurrentUsername, getProfileData} from "@/store/selectors/profileSelector";
+import {getProfileData} from "@/store/selectors/profileSelector";
 import {redirect, usePathname} from "next/navigation";
-import {set} from "immutable";
 import {ProfileSchema} from "@/store/types/ProfileSchema";
 
 interface IProfileProps {

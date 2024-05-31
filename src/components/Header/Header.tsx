@@ -9,6 +9,7 @@ import Button from "@/components/ui-kit/Button/Button";
 import {usePathname} from "next/navigation";
 import {BLUE_BACKGROUND} from "@/constants/consts";
 import notifications from '@/assets/notifications.svg';
+import avatar from '@/assets/avatar.png'
 
 export default function Header() {
   const pathname = usePathname()
@@ -29,9 +30,11 @@ export default function Header() {
         </Link>
       </div>}
       {localStorage.getItem('access_token') &&
-      <div className={styles.buttons}>
+      <div className={styles.logged}>
         <Image src={notifications} alt={'уведомления'}/>
-        
+        <Link href={'/profile'}>
+          <Image src={avatar} alt={'аватар'} width={48} height={48}/>
+        </Link>
       </div>
       }
     </nav>
