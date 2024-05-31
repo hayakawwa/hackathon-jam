@@ -4,9 +4,11 @@ import {activeFiltersReducer} from "@/store/slices/FiltersSlices/activeFilters.s
 import {api} from "@/api/api";
 import {listenerMiddleware} from "@/store/models/auth";
 import {authApi} from "@/api/authApi";
+import {profileReducer} from "@/store/slices/profile.slice";
 
 const rootReducer = combineReducers({
   [api.reducerPath]: api.reducer,
+  profile: profileReducer,
   eventFilters: eventFiltersReducer,
   activeFilters: activeFiltersReducer
 })
