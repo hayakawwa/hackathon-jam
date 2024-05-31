@@ -3,7 +3,7 @@ import {EventSchema} from "@/store/types/EventSchema";
 import {exitEventBody, getEventsResponse, getUserBody, getUsersResponse, joinEventBody, User} from "@/api/types";
 
 
-// TODO: типизация
+
 export const eventApi  = api.injectEndpoints({
   endpoints: (builder) => ({
     getEvents: builder.query<getEventsResponse, void>({
