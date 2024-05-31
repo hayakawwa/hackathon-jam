@@ -1,5 +1,10 @@
 import {api} from "@/api/api";
-import {GetCurrentProfileSchema, ProfileBodySchema, ProfileResponseSchema} from "@/store/types/ProfileSchema";
+import {
+    GetCurrentProfileSchema,
+    ProfileBodySchema,
+    ProfileResponseSchema,
+    SkillsResponseSchema
+} from "@/store/types/ProfileSchema";
 
 export const profileApi = api.injectEndpoints({
     endpoints: (builder) => ({
@@ -19,6 +24,9 @@ export const profileApi = api.injectEndpoints({
                 method: 'PATCH',
                 body: profileData
             }),
+        }),
+        getSkills: builder.query<SkillsResponseSchema, string>({
+            query: (username: string) => `/api/profile/${username}/skills`
         })
     })
 });
@@ -26,9 +34,10 @@ export const profileApi = api.injectEndpoints({
 export const {
     useEditProfileMutation,
     useGetCurrentProfileMutation,
-    useGetProfileQuery
+    useGetProfileQuery,
+    useGetSkillsQuery
 } = profileApi
 
 export const {
-    endpoints: {getCurrentProfile, getProfile, editProfile}
+    endpoints: {getCurrentProfile, getProfile, editProfile, getSkills}
 } = profileApi

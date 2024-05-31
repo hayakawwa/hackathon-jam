@@ -2,33 +2,36 @@
 
 import cls from "./Information.module.scss";
 import {FC} from "react";
-import location from '@/assets/ProfileLocation.svg'
+import locationIcon from '@/assets/ProfileLocation.svg'
 import work from '@/assets/ProfileWork.svg'
 import tg from '@/assets/ProfileTg.svg'
 import Image from "next/image";
 
 interface IInformationProps {
     className?: string;
+    location: string,
+    workPlace: string,
+    workTime: string
 }
 
-const Information: FC<IInformationProps> = ({className}) => {
+const Information: FC<IInformationProps> = ({className, location, workTime, workPlace}) => {
     return (
         <section className={`${cls.wrapper} ${className}`}>
             <h2 className={cls.header}>Информация</h2>
             <div className={cls.blocks}>
                 <div className={cls.block}>
                     <div className={cls.icon}>
-                        <Image src={location} alt="Населенный пункт"/>
+                        <Image src={locationIcon} alt="Населенный пункт"/>
                     </div>
-                    <p className={cls.text}>Екатеринбург, Россия</p>
+                    <p className={cls.text}>{location}</p>
                 </div>
                 <div className={cls.block}>
                     <div className={cls.icon}>
                         <Image src={work} alt="Опыт работы"/>
                     </div>
                     <div className={cls.textBlock}>
-                        <p className={cls.text}>Работает в IT</p>
-                        <p className={cls.subtext}>Опыт: 2 месяца</p>
+                        <p className={cls.text}>Работает в {workPlace}</p>
+                        <p className={cls.subtext}>Опыт: {workTime}</p>
                     </div>
                 </div>
                 <div className={cls.block}>

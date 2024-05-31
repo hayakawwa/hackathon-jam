@@ -20,7 +20,9 @@ export interface ProfileResponseSchema extends ProfileSchema {
     permissions?: number
 }
 
-export interface ProfileBodySchema extends ProfileSchema, GetCurrentProfileSchema {
+export interface ProfileBodySchema extends ProfileSchema, GetCurrentProfileSchema {}
 
+export interface SkillsResponseSchema {
+    $schema?: string,
+    skills: string[],
 }
-
