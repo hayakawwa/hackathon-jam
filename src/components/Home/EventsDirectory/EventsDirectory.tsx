@@ -45,8 +45,8 @@ export default function EventsDirectory() {
           <EventFilters />
         </section>
         <section className={styles.activeFilters}>
-          {activeFilters && activeFilters.map(item => (
-            <div className={styles.item}>
+          {activeFilters && activeFilters.map((item, index) => (
+            <div key={index} className={styles.item}>
               {item.value}
               <Image src={removeIcon} alt={'removeIcon'} className={styles.removeIcon} onClick={() => removeFilterItem(item.value)}/>
             </div>
@@ -57,8 +57,8 @@ export default function EventsDirectory() {
         </section>
         <section className={styles.eventsContainer}>
           {isError ? <p className={styles.error}>Ошибка при загрузке событий</p> : ''}
-          {eventsData?.slice(0, visible).map((item) => (
-            <EventCard start_date={item.start_time} end_date={item.end_time} name={item.name} location={item.location} tags={item.tags} urid={item.urid}/>
+          {eventsData?.slice(0, visible).map((item, index) => (
+            <EventCard key={index} start_date={item.start_time} end_date={item.end_time} name={item.name} location={item.location} tags={item.tags} urid={item.urid}/>
           ))}
         </section>
         <div className={`${styles.showMoreWrapper} ${eventsCount && eventsCount <= ITEMS_LIMIT && styles.disable}`}>

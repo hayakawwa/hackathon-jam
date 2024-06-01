@@ -43,6 +43,8 @@ const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
         }
     }, [isSuccess]);
 
+    const currentProfileData = useAppSelector(getProfileData);
+
     const {
         first_name: firstName,
         last_name: lastName,
@@ -52,7 +54,7 @@ const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
         location,
         work_place: workPlace,
         work_time: workTime
-    } = !isCurrentProfile ? otherUserData : useAppSelector(getProfileData);
+    } = !isCurrentProfile ? otherUserData : currentProfileData;
 
     const check = () => {
         if (isCurrentProfile) {

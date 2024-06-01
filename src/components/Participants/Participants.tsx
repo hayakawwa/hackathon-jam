@@ -48,8 +48,8 @@ export default function Participants() {
       </div>
       <p className={styles.label}>Чтобы участники смогли пригласить вас в команду, опубликуйте ваш профиль.</p>
       <div className={styles.cards}>
-        {data?.users.map((item) => (
-          <Card lastName={item.last_name} firstName={item.first_name}/>
+        {data?.users.map((item, index) => (
+          <Card key={index} lastName={item.last_name} firstName={item.first_name}/>
         ))}
       </div>
     </div>

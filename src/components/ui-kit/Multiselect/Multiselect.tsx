@@ -4,7 +4,7 @@ import cls from './Multiselect.module.scss';
 import React, {FC, useState} from "react";
 
 export interface IMultiselectProps {
-    options?: string[],
+    options: string[],
     placeholder?: string,
     name?: string,
     maxOptionsSelected?: number

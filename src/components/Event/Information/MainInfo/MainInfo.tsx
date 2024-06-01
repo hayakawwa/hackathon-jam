@@ -42,8 +42,8 @@ export default function MainInfo({title, prize, start_date, end_date, location, 
           <Button className={styles.accept}>Участвовать</Button>
         </Link>
         <div className={styles.tags}>
-          {tags && tags.map(tag => (
-            <Tag className={styles.tag}>{tag}</Tag>
+          {tags && tags.map((tag, index) => (
+            <Tag key={index} className={styles.tag}>{tag}</Tag>
           ))}
         </div>
         <div className={styles.itemsIcon}>

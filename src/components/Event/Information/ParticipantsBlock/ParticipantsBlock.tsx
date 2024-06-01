@@ -32,8 +32,8 @@ export default function ParticipantsBlock({users, pathname}: ParticipantsProps) 
           <Title className={styles.title}>{usersCount}</Title>
         </Link>
         <div className={styles.cards}>
-          {users?.slice(0, visible).map((item) => (
-            <Link href={`/profile/${item.username}`}>
+          {users?.slice(0, visible).map((item, index) => (
+            <Link key={index} href={`/profile/${item.username}`}>
               <Card firstName={item.first_name} lastName={item.last_name} className={styles.card}/>
             </Link>
           ))}

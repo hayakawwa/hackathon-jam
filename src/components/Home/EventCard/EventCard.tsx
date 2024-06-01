@@ -30,8 +30,8 @@ export default function EventCard({name, location, start_date, end_date, tags, u
           <div className={styles.location}>{location}</div>
         </div>
         <div className={styles.tags}>
-          {tags?.map(tag => (
-            <p className={styles.tag}>{tag}</p>
+          {tags?.map((tag, index) => (
+            <p key={index} className={styles.tag}>{tag}</p>
           ))}
         </div>
       </div>

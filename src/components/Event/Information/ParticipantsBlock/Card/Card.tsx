@@ -18,8 +18,8 @@ export default function Card({className, lastName, firstName}: CardProps) {
         <p className={`${styles.lastName} ${styles.name}`}>{lastName}</p>
         <p className={`${styles.firstName} ${styles.name}`}>{firstName}</p>
         <div className={styles.tags}>
-          {TAGS.map((item) => (
-            <Tag className={styles.tag}>Заглушка</Tag>
+          {TAGS.map((item, index) => (
+            <Tag key={index} className={styles.tag}>Заглушка</Tag>
           ))}
         </div>
       </div>

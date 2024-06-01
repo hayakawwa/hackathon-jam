@@ -35,8 +35,8 @@ export default function RegSelect({className, options}: RegSelectProps) {
         </div>
       </div>
       <ul className={`${styles.options} ${modalActive ? styles.modalActive : ''}`}>
-        {OPTIONS.map((item) => (
-          <li onClick={() => onItemClick(item)} className={styles.item}>{item}</li>
+        {OPTIONS.map((item, index) => (
+          <li key={index} onClick={() => onItemClick(item)} className={styles.item}>{item}</li>
         ))}
       </ul>
     </div>
