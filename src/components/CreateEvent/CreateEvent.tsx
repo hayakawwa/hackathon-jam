@@ -18,7 +18,7 @@ import Requirements from "@/components/CreateEvent/Requirements/Requirements";
 import EventInfo from "@/components/CreateEvent/EventInfo/EventInfo";
 
 interface CreateEventBody extends EventSchema {
-  access_token: string
+  access_token: string | null
 }
 
 export default function CreateEvent() {
@@ -39,6 +39,7 @@ export default function CreateEvent() {
   // TODO: сделать форматирование даты
 
   const body: CreateEventBody = {
+    access_token: '9745accecef79ba58b19529d0c96ad85',
     access_token: typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('access_token') as string : '',
     desc: desc,
     end_time: endDate && toISOFormat(endDate),
@@ -69,7 +70,7 @@ export default function CreateEvent() {
       <div className={styles.create}>
         <section className={styles.photoWrapper}>
           <Title className={styles.title}>Создание мероприятия</Title>
-          <Button className={styles.addPhotoBtn}>Загрузить фото</Button>
+          <Button className={styles.addPhotoBtn} isDownload={true}>Загрузить фото</Button>
         </section>
         <section className={styles.titleBlock}>
           <Title className={styles.infoTitle}>Информация</Title>

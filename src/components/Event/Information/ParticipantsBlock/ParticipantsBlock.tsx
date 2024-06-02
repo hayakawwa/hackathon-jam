@@ -16,7 +16,7 @@ interface ParticipantsProps {
 export default function ParticipantsBlock({users, pathname}: ParticipantsProps) {
   const ITEMS_LIMIT = 3
   const [visible, setVisible] = useState(ITEMS_LIMIT)
-  const usersCount = `Участники: ${users?.length}`
+  const usersCount = `Участники: ${users ? users?.length : 0}`
   const showMoreItems = () => {
     setVisible((prevState) => prevState + 3)
   }
@@ -28,22 +28,39 @@ export default function ParticipantsBlock({users, pathname}: ParticipantsProps) 
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <Link href={`/home/${pathname}/participants`}>
-          <Title className={styles.title}>{usersCount}</Title>
-        </Link>
-        <div className={styles.cards}>
-          {users?.slice(0, visible).map((item, index) => (
-            <Link key={index} href={`/profile/${item.username}`}>
-              <Card firstName={item.first_name} lastName={item.last_name} className={styles.card}/>
+        {users ?
+          (
+            <Link href={`/home/${pathname}/participants`}>
+              <Title className={styles.title}>{usersCount}</Title>
             </Link>
-          ))}
-        </div>
-        <div className={`${styles.btnWrapper} ${users && users.length <= ITEMS_LIMIT && styles.disable}`}>
-          {users && visible < users.length ?
-            <Button className={`${styles.scaleBtn}`} onClick={showMoreItems}>Показать ещё</Button> :
-            <Button className={styles.scaleBtn} onClick={defaultState}>Скрыть</Button>
-          }
-        </div>
+          ) :
+          (
+            <Title className={styles.title}>{usersCount}</Title>
+          )
+        }
+        {users ?
+          (
+            <>
+              <div className={styles.cards}>
+                {users?.slice(0, visible).map((item, index) => (
+                  <Link key={index} href={`/profile/${item.username}`}>
+                    <Card key={index} firstName={item.first_name} lastName={item.last_name} className={styles.card}/>
+                  </Link>
+                ))}
+              </div>
+              <div className={`${styles.btnWrapper} ${users && users.length <= ITEMS_LIMIT && styles.disable}`}>
+                {users && visible < users.length ?
+                  <Button className={`${styles.scaleBtn}`} onClick={showMoreItems}>Показать ещё</Button> :
+                  <Button className={styles.scaleBtn} onClick={defaultState}>Скрыть</Button>
+                }
+              </div>
+            </>
+          ) :
+          (
+            <div className={styles.zeroMessage}>Станьте первым участником</div>
+          )
+        }
+
       </div>
     </div>
   )

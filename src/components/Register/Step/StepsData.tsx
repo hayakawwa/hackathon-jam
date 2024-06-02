@@ -136,6 +136,10 @@ export const stepsData: IStepsData = {
             },
         ],
     },
+    [RegisterSteps.Avatar]: {
+        title: 'Загрузите фото профиля',
+        // TODO: сделать выбор аватара из файлов
+    },
     [RegisterSteps.Bio]: {
         title: 'Расскажите о себе',
         descriptions: ['Расскажите о себе. Это поможет тимлидам пригласить вас в команду'],
@@ -143,9 +147,5 @@ export const stepsData: IStepsData = {
             children: '',
             name: 'bio'
         }
-    },
-    [RegisterSteps.Avatar]: {
-        title: 'Загрузите фото профиля',
-        // TODO: сделать выбор аватара из файлов
     },
 }

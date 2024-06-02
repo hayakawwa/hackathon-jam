@@ -7,7 +7,7 @@ import React, {useState} from "react";
 
 interface RegSelectProps {
   className?: string
-  options?: []
+  options: string[]
 }
 
 export default function RegSelect({className, options}: RegSelectProps) {
@@ -23,8 +23,6 @@ export default function RegSelect({className, options}: RegSelectProps) {
     setModalActive(false)
   }
 
-  const OPTIONS = ['Дизайнер', 'Фронтенд', 'Аналитик']
-
   return (
     <div className={`${styles.selectWrapper} ${className}`}>
       <div className={styles.selectBtn} onClick={onArrowClick}>
@@ -35,8 +33,8 @@ export default function RegSelect({className, options}: RegSelectProps) {
         </div>
       </div>
       <ul className={`${styles.options} ${modalActive ? styles.modalActive : ''}`}>
-        {OPTIONS.map((item, index) => (
-          <li key={index} onClick={() => onItemClick(item)} className={styles.item}>{item}</li>
+        {options!.map((item) => (
+          <li onClick={() => onItemClick(item)} className={styles.item}>{item}</li>
         ))}
       </ul>
     </div>

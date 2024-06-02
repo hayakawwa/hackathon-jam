@@ -11,6 +11,7 @@ import {redirect, usePathname} from "next/navigation";
 import {useGetEventByNameQuery} from "@/api/eventApi";
 import Link from "next/link";
 import React from "react";
+import Input from "@/components/ui-kit/Input/Input";
 
 export default function EventRegistration() {
   const events = useAppSelector(getEvents)
@@ -35,7 +36,7 @@ export default function EventRegistration() {
           <p className={styles.people}>Заполнено: <span>5 человек</span></p>
           <div className={styles.team}>
             <p className={styles.teamName}>Название команды</p>
-            <RegSelect/>
+            <Input name={'название команды'}/>
           </div>
           <ParticipantReg/>
           <ParticipantReg/>

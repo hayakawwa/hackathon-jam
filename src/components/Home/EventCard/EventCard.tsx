@@ -21,7 +21,7 @@ export default function EventCard({name, location, start_date, end_date, tags, u
 
   return (
     <Link className={styles.wrapper} href={`home/${urid}`}>
-      <p className={styles.picture}></p>
+      <p className={styles.picture}>440x250</p>
       <div className={styles.content}>
         <p className={styles.date}><span>{start_time}</span> - <span>{end_time}</span></p>
         <Title className={styles.title}>{name}</Title>

@@ -18,9 +18,10 @@ export default function ParticipantReg() {
         </div>
         <div className={styles.role}>
           <p className={styles.sign}>Роль</p>
-          <RegSelect/>
+          <RegSelect options={['Разработчик', 'Дизайнер', 'Тимлид']}/>
         </div>
       </section>
     </div>
   )
 }
+

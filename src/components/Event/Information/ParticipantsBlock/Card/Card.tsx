@@ -1,6 +1,6 @@
 import styles from './Card.module.scss'
 import Image from "next/image";
-import avatar from '@/assets/avatar.png'
+import avatar from '@/assets/avatar.jpg'
 import Tag from "@/components/ui-kit/Tag/Tag";
 
 interface CardProps {
