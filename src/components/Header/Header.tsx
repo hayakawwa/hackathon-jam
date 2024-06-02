@@ -22,7 +22,7 @@ export default function Header() {
           <Image src={logoBlack} alt={'logo'} />
         }
       </Link>
-      {!['/register', '/login'].includes(pathname) && !localStorage.getItem('access_token') &&
+      {!['/register', '/login'].includes(pathname) && typeof window !== 'undefined' && window.localStorage && !localStorage.getItem('access_token') &&
       <div className={styles.buttons}>
         <Link href={'/login'}>
           <Button className={`${styles.loginBtn} ${!BLUE_BACKGROUND.includes(pathname) ? styles.loginBtnWhite : ''}`}>Войти</Button>
@@ -31,7 +31,7 @@ export default function Header() {
           <Button className={`${styles.registerBtn} ${!BLUE_BACKGROUND.includes(pathname) ? styles.registerBtnWhite : ''}`}>Зарегистрироваться</Button>
         </Link>
       </div>}
-      {localStorage.getItem('access_token') &&
+      {typeof window !== 'undefined' && window.localStorage && localStorage.getItem('access_token') &&
       <div className={styles.logged}>
         <Image src={notifications} alt={'уведомления'}/>
         <Link href={'/profile'}>

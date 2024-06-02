@@ -45,8 +45,8 @@ export default function Select({children, id, data}: Props) {
         </div>
       </div>
       <ul className={`${styles.options} ${currentFilter?.active ? styles.modalActive : ''}`}>
-        {data && data.map((item) => (
-          <FilterItem text={item} onClick={() => onCheckboxClick(item)}/>
+        {data && data.map((item, index) => (
+          <FilterItem key={index} text={item} onClick={() => onCheckboxClick(item)}/>
         ))}
       </ul>
     </div>

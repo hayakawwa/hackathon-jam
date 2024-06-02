@@ -20,8 +20,8 @@ const Skills: FC<ISkillsProps> = ({className, username}) => {
                 <>
                     <h2 className={cls.header}>Навыки</h2>
                     <div className={cls.skills}>
-                        {data!.skills && data!.skills.map(skill => (
-                            <Tag>{skill}</Tag>
+                        {data!.skills && data!.skills.map((skill, index) => (
+                            <Tag key={index}>{skill}</Tag>
                         ))}
                     </div>
                 </>

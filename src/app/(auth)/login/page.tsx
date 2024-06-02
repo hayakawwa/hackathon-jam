@@ -2,8 +2,8 @@
 
 import Login from "@/components/Login/Login";
 
-
 const RegisterPage = () => {
+
     return (
       <section>
         <Login/>

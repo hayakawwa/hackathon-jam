@@ -17,10 +17,10 @@ export default function EventRegistration() {
   const events = useAppSelector(getEvents)
   const pathname = usePathname().split('/').slice(-2)[0]
   let name = events.filter(item => item.urid === pathname).map(item => item.name)[0]
-  if (events.length === 0) {
+  // if (events.length === 0) {
     const {data, isLoading, isError, isSuccess, error} = useGetEventByNameQuery(pathname)
     name = data?.name
-  }
+  // }
 
   if (!name) {
     redirect('/home')

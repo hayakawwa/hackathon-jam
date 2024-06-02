@@ -7,13 +7,14 @@ FROM node:lts as builder
 WORKDIR /hackathon-jam
 COPY . .
 COPY --from=dependencies /hackathon-jam/node_modules ./node_modules
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_URL}
 RUN yarn build
 
 FROM node:lts as runner
 WORKDIR /hackathon-jam
 ENV NODE_ENV production
 
-COPY --from=builder /hackathon-jam/public ./public
 COPY --from=builder /hackathon-jam/package.json ./package.json
 COPY --from=builder /hackathon-jam/.next ./.next
 COPY --from=builder /hackathon-jam/node_modules ./node_modules

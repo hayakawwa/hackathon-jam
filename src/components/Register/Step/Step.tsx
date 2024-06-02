@@ -28,14 +28,14 @@ const Step: FC<IStepProps> = ({step}) => {
                 <Title>{title}</Title>
             </header>
 
-            {descriptions && descriptions.map((description) => (
-                <div className={cls.descriptions}>
+            {descriptions && descriptions.map((description, index) => (
+                <div key={index} className={cls.descriptions}>
                     <p>{description}</p>
                 </div>
             ))}
             {inputs &&
-                inputs.map(({placeholder, name, value = '', required = false, isPassword = false}) => (
-                <div className={cls.inputs}>
+                inputs.map(({placeholder, name, value = '', required = false, isPassword = false}, index) => (
+                <div key={index} className={cls.inputs}>
                     <p>{placeholder}</p>
                     <Input className={cls.input} key={name} name={name} value={value} required={required} isPassword={isPassword}/>
                 </div>

@@ -21,7 +21,7 @@ const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
 
     const [otherUserData, setOtherUserData] = useState<ProfileSchema>({});
 
-    if (localStorage.getItem('username') === pathnameUsername) {
+    if (typeof window !== 'undefined' && window.localStorage && localStorage.getItem('username') === pathnameUsername) {
         redirect('/profile')
     }
 
@@ -32,9 +32,11 @@ const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
         if (!isCurrentProfile) {
             return
         }
-        getCurrentProfile({
-            access_token: localStorage.getItem('access_token') as string
-        });
+        if (typeof window !== 'undefined' && window.localStorage) {
+            getCurrentProfile({
+                access_token: localStorage.getItem('access_token') as string
+            });
+        }
     }, []);
 
     useEffect(() => {
@@ -42,6 +44,8 @@ const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
             setOtherUserData(data);
         }
     }, [isSuccess]);
+
+    const currentProfileData = useAppSelector(getProfileData);
 
     const {
         first_name: firstName,
@@ -52,7 +56,7 @@ const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
         location,
         work_place: workPlace,
         work_time: workTime
-    } = !isCurrentProfile ? otherUserData : useAppSelector(getProfileData);
+    } = !isCurrentProfile ? otherUserData : currentProfileData;
 
     const check = () => {
         if (isCurrentProfile) {

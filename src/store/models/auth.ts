@@ -7,36 +7,32 @@ listenerMiddleware.startListening({
     matcher: authApi.endpoints.login.matchFulfilled,
     effect: async (action, listenerApi) => {
         listenerApi.cancelActiveListeners();
-        if (action.payload.access_token) {
-            localStorage.setItem(
+        if (action.payload.access_token && typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.setItem(
                 'access_token',
-                action.payload.access_token
-            );
+                action.payload.access_token)
         }
-        if (action.payload.username) {
-            localStorage.setItem(
+        if (action.payload.username  && typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.setItem(
                 'username',
-                action.payload.username
-            );
+                action.payload.username)
         }
     }
-});
+})
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.register.matchFulfilled,
     effect: async (action, listenerApi) => {
         listenerApi.cancelActiveListeners();
-        if (action.payload.access_token) {
-            localStorage.setItem(
+        if (action.payload.access_token && typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.setItem(
                 'access_token',
-                action.payload.access_token
-            );
+                action.payload.access_token)
         }
-        if (action.payload.username) {
-            localStorage.setItem(
+        if (action.payload.username && typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.setItem(
                 'username',
-                action.payload.username
-            );
+                action.payload.username)
         }
     }
-});
+})

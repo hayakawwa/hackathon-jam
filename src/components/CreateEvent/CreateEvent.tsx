@@ -40,6 +40,7 @@ export default function CreateEvent() {
 
   const body: CreateEventBody = {
     access_token: '9745accecef79ba58b19529d0c96ad85',
+    access_token: typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('access_token') as string : '',
     desc: desc,
     end_time: endDate && toISOFormat(endDate),
     icon: '',
