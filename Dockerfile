@@ -13,7 +13,6 @@ FROM node:lts as runner
 WORKDIR /hackathon-jam
 ENV NODE_ENV production
 
-COPY --from=builder /hackathon-jam/public ./public
 COPY --from=builder /hackathon-jam/package.json ./package.json
 COPY --from=builder /hackathon-jam/.next ./.next
 COPY --from=builder /hackathon-jam/node_modules ./node_modules
