@@ -2,11 +2,9 @@
 
 import Login from "@/components/Login/Login";
 
-const isServer = () => typeof window === `undefined`;
-
 const RegisterPage = () => {
 
-    return isServer() ? null : (
+    return (
       <section>
         <Login/>
       </section>

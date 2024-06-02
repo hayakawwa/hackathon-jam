@@ -39,7 +39,7 @@ export default function CreateEvent() {
   // TODO: сделать форматирование даты
 
   const body: CreateEventBody = {
-    access_token: '58af532fb5c6c62f2a6a694d94fc7939',
+    access_token: typeof window !== 'undefined' && window.localStorage ? localStorage.getItem('access_token') as string : '',
     desc: desc,
     end_time: endDate && toISOFormat(endDate),
     icon: '',
