@@ -9,7 +9,7 @@ export default function Description({desc}: DescriptionProps) {
   return (
     <div className={styles.content}>
       <Title className={styles.title}>Описание</Title>
-      <div className={styles.description}>{desc}</div>
+      <div className={styles.description}>{desc ? desc : 'Описание отсутствует'}</div>
     </div>
   )
 }

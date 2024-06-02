@@ -9,17 +9,19 @@ import Button from "@/components/ui-kit/Button/Button";
 import {usePathname} from "next/navigation";
 import {BLUE_BACKGROUND} from "@/constants/consts";
 import notifications from '@/assets/notifications.svg';
-import avatar from '@/assets/avatar.png'
+import avatar from '@/assets/avatar.jpg'
 
 export default function Header() {
   const pathname = usePathname()
 
   return (
     <nav className={styles.header}>
-      {BLUE_BACKGROUND.includes(pathname) ?
-        <Image src={logoWhite} alt={'logo'} className={styles.logo}/> :
-        <Image src={logoBlack} alt={'logo'} className={styles.logo}/>
-      }
+      <Link className={styles.logo} href={'/home'}>
+        {BLUE_BACKGROUND.includes(pathname) ?
+          <Image src={logoWhite} alt={'logo'} /> :
+          <Image src={logoBlack} alt={'logo'} />
+        }
+      </Link>
       {!['/register', '/login'].includes(pathname) && !localStorage.getItem('access_token') &&
       <div className={styles.buttons}>
         <Link href={'/login'}>
@@ -33,7 +35,7 @@ export default function Header() {
       <div className={styles.logged}>
         <Image src={notifications} alt={'уведомления'}/>
         <Link href={'/profile'}>
-          <Image src={avatar} alt={'аватар'} width={48} height={48}/>
+          <Image src={avatar} alt={'аватар'} className={styles.avatar}/>
         </Link>
       </div>
       }

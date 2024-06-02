@@ -53,7 +53,7 @@ const Register = () => {
                 return {...prevState, ...{[i.name]: i.value}}
             });
         })
-        if (currentStep === RegisterSteps.Avatar) {
+        if (currentStep === RegisterSteps.Bio) {
             // @ts-ignore
             const result = register(userData);
             result.then((result) => {

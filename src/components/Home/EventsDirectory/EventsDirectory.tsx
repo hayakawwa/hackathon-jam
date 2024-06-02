@@ -13,13 +13,18 @@ import {getActiveFilters} from "@/store/selectors/eventFiltersSelector";
 import Image from "next/image";
 import {activeFiltersActions} from "@/store/slices/FiltersSlices/activeFilters.slice";
 import {useGetEventsQuery} from "@/api/eventApi";
+import {useDebounce} from "@/hooks/useDebounce";
 
 export default function EventsDirectory() {
   const ITEMS_LIMIT = 9;
   const [visible, setVisible] = useState(ITEMS_LIMIT)
-  // const [filtered, setFiltered] = useState<EventCardProps[]>()
+  const [searchValue, setSearchValue] = useState<string>()
   const activeFilters = useAppSelector(getActiveFilters).filter(item => item.checked)
   const dispatch = useAppDispatch()
+
+  const debouncedValue = useDebounce(searchValue, 500)
+
+  console.log(debouncedValue)
 
   const {data: response, isError, isLoading} = useGetEventsQuery();
   const eventsData = response?.events
@@ -53,13 +58,18 @@ export default function EventsDirectory() {
           ))}
         </section>
         <section className={styles.inputSection}>
-          <Input placeholder={'Найти мероприятие'} className={styles.input} name={'searchInput'} isSearch />
+          <Input placeholder={'Найти мероприятие'} onChange={(e) => setSearchValue(e.target.value)} className={styles.input} name={'searchInput'} isSearch />
         </section>
         <section className={styles.eventsContainer}>
           {isError ? <p className={styles.error}>Ошибка при загрузке событий</p> : ''}
-          {eventsData?.slice(0, visible).map((item) => (
-            <EventCard start_date={item.start_time} end_date={item.end_time} name={item.name} location={item.location} tags={item.tags} urid={item.urid}/>
-          ))}
+          {debouncedValue ?
+            (eventsData?.filter(item => item.name?.includes(debouncedValue!)).slice(0, visible).map((item) => (
+              <EventCard start_date={item.start_time} end_date={item.end_time} name={item.name} location={item.location} tags={item.tags} urid={item.urid}/>
+            ))) :
+            (eventsData?.slice(0, visible).map((item) => (
+                <EventCard start_date={item.start_time} end_date={item.end_time} name={item.name} location={item.location} tags={item.tags} urid={item.urid}/>
+              )))
+          }
         </section>
         <div className={`${styles.showMoreWrapper} ${eventsCount && eventsCount <= ITEMS_LIMIT && styles.disable}`}>
           {eventsCount && visible < eventsCount ?

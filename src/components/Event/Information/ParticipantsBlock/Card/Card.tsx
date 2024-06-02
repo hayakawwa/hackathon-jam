@@ -1,6 +1,6 @@
 import styles from './Card.module.scss'
 import Image from "next/image";
-import avatar from '@/assets/avatar.png'
+import avatar from '@/assets/avatar.jpg'
 import Tag from "@/components/ui-kit/Tag/Tag";
 
 interface CardProps {
@@ -18,8 +18,8 @@ export default function Card({className, lastName, firstName}: CardProps) {
         <p className={`${styles.lastName} ${styles.name}`}>{lastName}</p>
         <p className={`${styles.firstName} ${styles.name}`}>{firstName}</p>
         <div className={styles.tags}>
-          {TAGS.map((item) => (
-            <Tag className={styles.tag}>Заглушка</Tag>
+          {TAGS.map((item, index) => (
+            <Tag key={index} className={styles.tag}>Заглушка</Tag>
           ))}
         </div>
       </div>

@@ -1,10 +1,22 @@
-.button {
-  font-weight: 500;
-  padding: 16px 32px;
-  border-radius: 12px;
-  color: white;
-  font-size: 16px;
-  line-height: 19.5px;
+.buttonGroup {
+  position: relative;
+  .arrow {
+    position: absolute;
+    top: 18px;
+    left: 28px;
+  }
+  .button {
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    line-height: 19.5px;
+  }
+  .download {
+    padding-left: 52px;
+  }
+
   &:hover {
     opacity: 0.8;
   }
@@ -12,3 +24,4 @@
     opacity: 0.6;
   }
 }
+

@@ -24,15 +24,18 @@
     width: 100%;
     top: 70px;
     border: 1px solid #B4B4B4FF;
-    padding: 24px 20px;
     border-radius: 8px;
     background: white;
     transform: scale(0);
     transition: 60ms transform ease-in-out;
     .item {
-      margin-bottom: 18px;
+      padding: 24px 16px;
+      border-radius: 8px;
       &:last-child {
         margin-bottom: 0;
+      }
+      &:hover {
+        background-color: #FAFAFA;
       }
     }
   }

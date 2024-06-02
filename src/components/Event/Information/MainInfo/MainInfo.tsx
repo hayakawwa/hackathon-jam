@@ -35,38 +35,38 @@ export default function MainInfo({title, prize, start_date, end_date, location, 
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.picture}></p>
+      <p className={styles.picture}>1025x575</p>
       <div className={styles.content}>
         <Title className={styles.title}>{title}</Title>
-        <Link href={`${pathname}/registration`}>
+        <Link className={styles.acceptWrapper} href={`${pathname}/registration`}>
           <Button className={styles.accept}>Участвовать</Button>
         </Link>
         <div className={styles.tags}>
-          {tags && tags.map(tag => (
-            <Tag className={styles.tag}>{tag}</Tag>
+          {tags && tags.map((tag, index) => (
+            <Tag key={index} className={styles.tag}>{tag}</Tag>
           ))}
         </div>
         <div className={styles.itemsIcon}>
           <div className={styles.item}>
             <Image src={dateIcon} alt={'dateIcon'}/>
-            <p className={styles.info}><span>{start_time}</span> - <span>{end_time}</span></p>
+            <p className={styles.info}><span>{start_time ? start_time : ''}</span> - <span>{end_time ? end_time : ''}</span></p>
           </div>
           <div className={styles.item}>
             <Image src={locationIcon} alt={'locationIcon'}/>
-            <div className={`${styles.info} ${styles.locationInfo}`}>{location}</div>
+            <div className={`${styles.info} ${styles.locationInfo}`}>{location ? location : 'Локация не указана'}</div>
           </div>
           <div className={styles.item}>
             <Image src={prizeIcon} alt={'prizeIcon'}/>
             <div className={`${styles.info} ${styles.prizeInfo}`}>
               <p className={`${styles.prize} ${styles.topInfo}`}>Призовой фонд:</p>
-              <p className={`${styles.size} ${styles.botInfo}`}>{prize}</p>
+              <p className={`${styles.size} ${styles.botInfo}`}>{prize ? prize : 'не указан'}</p>
             </div>
           </div>
           <div className={styles.item}>
             <Image src={orgIcon} alt={'orgIcon'}/>
             <div className={`${styles.info}`}>
               <p className={`${styles.topInfo}`}>Организатор:</p>
-              <p className={`${styles.org} ${styles.botInfo}`}>{organisators && organisators[0].email}</p>
+              <p className={`${styles.org} ${styles.botInfo}`}>{organisators ? organisators[0].email : 'не указан'}</p>
             </div>
           </div>
         </div>
