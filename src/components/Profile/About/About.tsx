@@ -12,7 +12,7 @@ const About: FC<IAboutProps> = ({className, text}) => {
     return (
         <section className={`${cls.wrapper} ${className}`}>
             <h2 className={cls.header}>О себе</h2>
-            <p className={cls.text}>{text}</p>
+            <p className={cls.text}>{text ? text : 'тут пока ничего нет...'}</p>
         </section>
     )
 }

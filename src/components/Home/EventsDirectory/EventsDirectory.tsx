@@ -24,8 +24,6 @@ export default function EventsDirectory() {
 
   const debouncedValue = useDebounce(searchValue, 500)
 
-  console.log(debouncedValue)
-
   const {data: response, isError, isLoading} = useGetEventsQuery();
   const eventsData = response?.events
   const eventsCount = response?.count

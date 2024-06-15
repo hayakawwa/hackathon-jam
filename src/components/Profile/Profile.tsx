@@ -5,7 +5,7 @@ import Header from "@/components/Profile/Header/Header";
 import Information from "@/components/Profile/Information/Information";
 import Skills from "@/components/Profile/Skills/Skills";
 import About from "@/components/Profile/About/About";
-import {useGetCurrentProfileMutation, useGetProfileQuery} from "@/api/profileApi";
+import {useGetProfileQuery} from "@/api/profileApi";
 import {FC, useEffect, useState} from "react";
 import {useAppSelector} from "@/hooks/hooks";
 import {getProfileData} from "@/store/selectors/profileSelector";
@@ -18,32 +18,21 @@ interface IProfileProps {
 
 const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
     const pathnameUsername = usePathname().split('/').slice(-1)[0];
-
     const [otherUserData, setOtherUserData] = useState<ProfileSchema>({});
 
     if (typeof window !== 'undefined' && window.localStorage && localStorage.getItem('username') === pathnameUsername) {
         redirect('/profile')
     }
 
-    const [getCurrentProfile, {isLoading}] = useGetCurrentProfileMutation();
-    const {data, isSuccess} = useGetProfileQuery(pathnameUsername);
+    if (!isCurrentProfile) {
+        const {data, isSuccess} = useGetProfileQuery(pathnameUsername);
 
-    useEffect(() => {
-        if (!isCurrentProfile) {
-            return
-        }
-        if (typeof window !== 'undefined' && window.localStorage) {
-            getCurrentProfile({
-                access_token: localStorage.getItem('access_token') as string
-            });
-        }
-    }, []);
-
-    useEffect(() => {
-        if (isSuccess) {
-            setOtherUserData(data);
-        }
-    }, [isSuccess]);
+        useEffect(() => {
+            if (isSuccess) {
+                setOtherUserData(data);
+            }
+        }, [isSuccess]);
+    }
 
     const currentProfileData = useAppSelector(getProfileData);
 
@@ -58,17 +47,9 @@ const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
         work_time: workTime
     } = !isCurrentProfile ? otherUserData : currentProfileData;
 
-    const check = () => {
-        if (isCurrentProfile) {
-            return !isLoading;
-        } else {
-            return isSuccess;
-        }
-    }
 
     return (
         <main className={cls.main}>
-            {check() &&
                 <>
                     <div className={cls.cover}></div>
                     <div className={cls.mainInfo}>
@@ -80,7 +61,6 @@ const Profile: FC<IProfileProps> = ({isCurrentProfile}) => {
                         </div>
                     </div>
                 </>
-            }
         </main>
     )
 }

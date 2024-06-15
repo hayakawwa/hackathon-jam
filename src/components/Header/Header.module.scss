@@ -33,13 +33,31 @@
   .logged {
     display: flex;
     position: absolute;
-    gap: 20px;
+    gap: 32px;
     right: 14.27%;
     width: max-content;
-    .avatar {
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
+    .avatarGroup {
+      //
+      .avatar {
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+      }
+      .arrow {
+        position: absolute;
+        top: 20px;
+        right: -24px;
+        transition: 0.5s;
+        cursor: pointer;
+        vertical-align: center;
+      }
+      .arrowActive {
+        transform: scaleY(-1);
+      }
+    }
+    .createEventBtn {
+      background-color: $base-light-yellow;
+      padding: 16px 32px;
     }
   }
 }

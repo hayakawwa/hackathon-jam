@@ -2,7 +2,7 @@
 
 import Information from "@/components/Event/Information/Information";
 import styles from './Event.module.scss'
-import Map from "@/components/Event/Map/Map";
+import Map from "@/components/Event/Map/MapContainer";
 import Requirements from "@/components/Event/Requirements/Requirements";
 import {redirect, usePathname} from "next/navigation";
 import {useGetEventByNameQuery, useGetUsersMutation} from "@/api/eventApi";
@@ -10,6 +10,7 @@ import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import {useAppDispatch} from "@/hooks/hooks";
 import {eventsActions} from "@/store/slices/events.slice";
+import MapContainer from "@/components/Event/Map/MapContainer";
 export default function EventItem() {
   const pathname = usePathname().split('/').slice(-1)[0]
   const {data, isLoading, isError, isSuccess, error} = useGetEventByNameQuery(pathname)
@@ -34,7 +35,7 @@ export default function EventItem() {
       <div className={styles.content}>
         <Information pathname={pathname} data={data} users={usersData?.users}/>
         <div className={styles.subInfo}>
-          <Map/>
+          <MapContainer />
           <Requirements data={data}/>
         </div>
       </div>

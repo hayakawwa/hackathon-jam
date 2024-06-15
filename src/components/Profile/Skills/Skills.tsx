@@ -19,11 +19,15 @@ const Skills: FC<ISkillsProps> = ({className, username}) => {
             {isSuccess &&
                 <>
                     <h2 className={cls.header}>Навыки</h2>
-                    <div className={cls.skills}>
-                        {data!.skills && data!.skills.map((skill, index) => (
+                    {data!.skills ?
+                      (<div className={cls.skills}>
+                          {data!.skills && data!.skills.map((skill, index) => (
                             <Tag key={index}>{skill}</Tag>
-                        ))}
-                    </div>
+                          ))}
+                      </div>) :
+                      (<div className={cls.stub}>тут пока ничего нет...</div>)
+                    }
+
                 </>
             }
         </section>

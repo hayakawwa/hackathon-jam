@@ -9,6 +9,7 @@ export interface ProfileSchema {
     username?: string,
     work_place?: string,
     work_time?: string
+    permissions?: number
 }
 
 export interface GetCurrentProfileSchema {
@@ -17,7 +18,6 @@ export interface GetCurrentProfileSchema {
 
 export interface ProfileResponseSchema extends ProfileSchema {
     $schema?: string,
-    permissions?: number
 }
 
 export interface ProfileBodySchema extends ProfileSchema, GetCurrentProfileSchema {}

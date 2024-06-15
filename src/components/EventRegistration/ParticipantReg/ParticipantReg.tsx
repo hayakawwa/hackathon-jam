@@ -3,10 +3,16 @@ import Title from "@/components/ui-kit/Title/Title";
 import Input from "@/components/ui-kit/Input/Input";
 import RegSelect from "@/components/EventRegistration/RegSelect/RegSelect";
 
-export default function ParticipantReg() {
+interface ParticipantRegProp {
+  participantNumber?: number
+}
+
+export default function ParticipantReg({participantNumber}: ParticipantRegProp) {
+  const title = `Участник ${participantNumber}`
+
   return (
     <div className={styles.wrapper}>
-      <Title className={styles.title}>Участник 1</Title>
+      <Title className={styles.title}>{title}</Title>
       <section className={styles.name}>
         <p className={styles.sign}>ФИО</p>
         <Input name={'ФИО'} className={styles.nameInput}/>

@@ -1,7 +1,7 @@
 @import '@/constants/consts';
 
 .layout {
-  width: 71.46%;
+  width: 71.46vw;
   margin: 110px auto 60px auto;
   .breadcrumbs {
     margin-bottom: 20px;
@@ -14,9 +14,9 @@
   .wrapper {
     background-color: white;
     border-radius: 20px;
+    padding: 48px;
     .content {
-      width: 53.24%;
-      padding: 48px;
+      width: 49.21%;
       .title {
         font-size: 32px;
         margin-bottom: 20px;
