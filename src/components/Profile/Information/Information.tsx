@@ -23,15 +23,15 @@ const Information: FC<IInformationProps> = ({className, location, workTime, work
                     <div className={cls.icon}>
                         <Image src={locationIcon} alt="Населенный пункт"/>
                     </div>
-                    <p className={cls.text}>{location}</p>
+                    <p className={cls.text}>{location ? location : 'Город не указан'}</p>
                 </div>
                 <div className={cls.block}>
                     <div className={cls.icon}>
                         <Image src={work} alt="Опыт работы"/>
                     </div>
                     <div className={cls.textBlock}>
-                        <p className={cls.text}>Работает в {workPlace}</p>
-                        <p className={cls.subtext}>Опыт: {workTime}</p>
+                        <p className={cls.text}>Место работы: {workPlace ? workPlace : 'не указано'}</p>
+                        <p className={cls.subtext}>Опыт: {workTime ? workTime : 'не указан'}</p>
                     </div>
                 </div>
                 <div className={cls.block}>

@@ -14,8 +14,10 @@ export const eventFiltersSlice = createSlice({
   name: 'eventFilters',
   initialState,
   reducers: {
-    closeAll: (state) => {
-      state.data.map(item => {
+    closeCurrentFilter: (state, action: PayloadAction<EventFiltersSchema>) => {
+      state.data
+        .filter(item => item.id === action.payload.id)
+        .map(item => {
           item.active = false
         })
     },

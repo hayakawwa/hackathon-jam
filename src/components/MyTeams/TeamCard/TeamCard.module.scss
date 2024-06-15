@@ -1,0 +1,37 @@
+@import "@/constants/consts";
+
+.wrapper {
+  margin-bottom: 32px;
+  .eventName {
+    margin-bottom: 24px;
+  }
+  .teamWrapper {
+    border: 1px solid #B4B4B4;
+    border-radius: 16px;
+    padding: 28px;
+    width: max-content;
+    max-width: 100%;
+    .teamNameWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      align-items: center;
+      .btn {
+        padding: 14px 28px;
+        font-size: 14px;
+        border: 1px solid $base-dark-blue;
+        color: $base-dark-blue;
+      }
+      .teamName {
+        font-size: 20px;
+      }
+    }
+
+    .teamMates {
+      display: flex;
+      gap: 27.6px;
+      flex-wrap: wrap;
+    }
+  }
+}

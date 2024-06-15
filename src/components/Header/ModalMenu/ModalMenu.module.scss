@@ -1,0 +1,36 @@
+.wrapper {
+  z-index: 1;
+  border-radius: 12px;
+  border: 1px solid #B4B4B4;
+  background-color: white;
+  position: absolute;
+  top: 60px;
+  right: -8px;
+  transform: scale(0);
+  transition: 60ms transform ease-in-out;
+  .menuItem {
+    padding: 0 56px 0 24px;
+    display: flex;
+    gap: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    &:first-child {
+      padding-top: 24px;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      opacity: 0.6;
+    }
+    &:last-child {
+      margin: 0;
+      padding: 16px 24px 24px 24px;
+      border-top: 1px solid #B4B4B4;
+    }
+  }
+}
+.active {
+  transform: scale(1);
+}
